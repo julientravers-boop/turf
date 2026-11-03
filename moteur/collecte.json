@@ -1,0 +1,675 @@
+{
+  "date": "2026-11-03",
+  "genere_le": "9h45",
+  "course": {
+    "hippodrome": "Vincennes",
+    "prix": "Prix de Vienne",
+    "rc": "R1 C1",
+    "heure": "13h55",
+    "detail": "Trot attelé, 2 850 m, 17 partants.",
+    "partants": 17,
+    "grande_course": false
+  },
+  "non_partants": [],
+  "partants": [
+    {
+      "num": 2,
+      "nom": "Kynte Flush",
+      "cote_probable": null,
+      "pct_enjeux": null,
+      "stats": "",
+      "age": null,
+      "driver": null,
+      "entraineur": null,
+      "musique": null
+    },
+    {
+      "num": 4,
+      "nom": "Kansas Quesnot",
+      "cote_probable": null,
+      "pct_enjeux": null,
+      "stats": "",
+      "age": null,
+      "driver": null,
+      "entraineur": null,
+      "musique": null
+    },
+    {
+      "num": 5,
+      "nom": "Kannabis Jeloca",
+      "cote_probable": null,
+      "pct_enjeux": null,
+      "stats": "",
+      "age": null,
+      "driver": null,
+      "entraineur": null,
+      "musique": null
+    },
+    {
+      "num": 7,
+      "nom": "Kosy d'Eronville",
+      "cote_probable": null,
+      "pct_enjeux": null,
+      "stats": "",
+      "age": null,
+      "driver": null,
+      "entraineur": null,
+      "musique": null
+    },
+    {
+      "num": 8,
+      "nom": "Karma",
+      "cote_probable": null,
+      "pct_enjeux": null,
+      "stats": "",
+      "age": null,
+      "driver": null,
+      "entraineur": null,
+      "musique": null
+    },
+    {
+      "num": 10,
+      "nom": "Kazy Mérité",
+      "cote_probable": null,
+      "pct_enjeux": null,
+      "stats": "",
+      "age": null,
+      "driver": null,
+      "entraineur": null,
+      "musique": null
+    },
+    {
+      "num": 11,
+      "nom": "Kejaime de Houelle",
+      "cote_probable": null,
+      "pct_enjeux": null,
+      "stats": "",
+      "age": null,
+      "driver": null,
+      "entraineur": null,
+      "musique": null
+    },
+    {
+      "num": 12,
+      "nom": "Kaiser des Granges",
+      "cote_probable": null,
+      "pct_enjeux": null,
+      "stats": "",
+      "age": null,
+      "driver": null,
+      "entraineur": null,
+      "musique": null
+    },
+    {
+      "num": 13,
+      "nom": "Kapitano de Lou",
+      "cote_probable": null,
+      "pct_enjeux": null,
+      "stats": "",
+      "age": null,
+      "driver": null,
+      "entraineur": null,
+      "musique": null
+    },
+    {
+      "num": 14,
+      "nom": "Koméo du Dôme",
+      "cote_probable": null,
+      "pct_enjeux": null,
+      "stats": "",
+      "age": null,
+      "driver": null,
+      "entraineur": null,
+      "musique": null
+    },
+    {
+      "num": 15,
+      "nom": "Kancalais",
+      "cote_probable": null,
+      "pct_enjeux": null,
+      "stats": "",
+      "age": null,
+      "driver": null,
+      "entraineur": null,
+      "musique": null
+    },
+    {
+      "num": 16,
+      "nom": "Kismet",
+      "cote_probable": null,
+      "pct_enjeux": null,
+      "stats": "",
+      "age": null,
+      "driver": null,
+      "entraineur": null,
+      "musique": null
+    },
+    {
+      "num": 17,
+      "nom": "Kapusha Mip",
+      "cote_probable": null,
+      "pct_enjeux": null,
+      "stats": "",
+      "age": null,
+      "driver": null,
+      "entraineur": null,
+      "musique": null
+    }
+  ],
+  "presse": {
+    "nb_journaux": 30,
+    "synthese": [
+      {
+        "num": 13,
+        "nom": "Kapitano de Lou",
+        "points": 192,
+        "citations": 30,
+        "premiers_choix": 12
+      },
+      {
+        "num": 15,
+        "nom": "Kancalais",
+        "points": 178,
+        "citations": 30,
+        "premiers_choix": 8
+      },
+      {
+        "num": 11,
+        "nom": "Kejaime de Houelle",
+        "points": 129,
+        "citations": 27,
+        "premiers_choix": 2
+      },
+      {
+        "num": 16,
+        "nom": "Kismet",
+        "points": 129,
+        "citations": 26,
+        "premiers_choix": 4
+      },
+      {
+        "num": 5,
+        "nom": "Kannabis Jeloca",
+        "points": 115,
+        "citations": 23,
+        "premiers_choix": 2
+      },
+      {
+        "num": 12,
+        "nom": "Kaiser des Granges",
+        "points": 98,
+        "citations": 23,
+        "premiers_choix": 1
+      },
+      {
+        "num": 8,
+        "nom": "Karma",
+        "points": 82,
+        "citations": 21,
+        "premiers_choix": 1
+      },
+      {
+        "num": 14,
+        "nom": "Koméo du Dôme",
+        "points": 51,
+        "citations": 19,
+        "premiers_choix": 0
+      },
+      {
+        "num": 4,
+        "nom": "Kansas Quesnot",
+        "points": 34,
+        "citations": 13,
+        "premiers_choix": 0
+      },
+      {
+        "num": 2,
+        "nom": "Kynte Flush",
+        "points": 28,
+        "citations": 9,
+        "premiers_choix": 0
+      },
+      {
+        "num": 7,
+        "nom": "Kosy d'Eronville",
+        "points": 20,
+        "citations": 8,
+        "premiers_choix": 0
+      },
+      {
+        "num": 17,
+        "nom": "Kapusha Mip",
+        "points": 14,
+        "citations": 6,
+        "premiers_choix": 0
+      },
+      {
+        "num": 10,
+        "nom": "Kazy Mérité",
+        "points": 10,
+        "citations": 5,
+        "premiers_choix": 0
+      }
+    ],
+    "journaux": [
+      {
+        "nom": "La Voix du Nord",
+        "chevaux": [
+          13,
+          16,
+          11,
+          15,
+          5,
+          8,
+          4,
+          14
+        ]
+      },
+      {
+        "nom": "Centre Presse Poitiers",
+        "chevaux": [
+          15,
+          13,
+          12,
+          2,
+          7,
+          16,
+          17,
+          14
+        ]
+      },
+      {
+        "nom": "Nve. Rep. Centre-Ouest",
+        "chevaux": [
+          13,
+          15,
+          16,
+          5,
+          11,
+          8,
+          12,
+          2
+        ]
+      },
+      {
+        "nom": "Paris Turf",
+        "chevaux": [
+          8,
+          17,
+          16,
+          15,
+          14,
+          13,
+          12,
+          11
+        ]
+      },
+      {
+        "nom": "Le Parisien",
+        "chevaux": [
+          15,
+          12,
+          14,
+          8,
+          10,
+          5,
+          13,
+          11
+        ]
+      },
+      {
+        "nom": "Le Progrès de Lyon",
+        "chevaux": [
+          13,
+          16,
+          11,
+          15,
+          5,
+          8,
+          4,
+          14
+        ]
+      },
+      {
+        "nom": "Nice Matin",
+        "chevaux": [
+          12,
+          13,
+          15,
+          5,
+          11,
+          8,
+          2,
+          14
+        ]
+      },
+      {
+        "nom": "La Provence",
+        "chevaux": [
+          13,
+          5,
+          11,
+          8,
+          12,
+          15,
+          14,
+          16
+        ]
+      },
+      {
+        "nom": "Le Matin de Lausanne",
+        "chevaux": [
+          13,
+          11,
+          15,
+          12,
+          14,
+          5,
+          8,
+          16
+        ]
+      },
+      {
+        "nom": "République des Pyrénées",
+        "chevaux": [
+          16,
+          11,
+          5,
+          13,
+          8,
+          14,
+          15,
+          12
+        ]
+      },
+      {
+        "nom": "Paris Normandie",
+        "chevaux": [
+          11,
+          5,
+          13,
+          12,
+          15,
+          2,
+          14,
+          7
+        ]
+      },
+      {
+        "nom": "Les 7 de week-end",
+        "chevaux": [
+          16,
+          13,
+          12,
+          15,
+          7,
+          8,
+          17,
+          10
+        ]
+      },
+      {
+        "nom": "L'Yonne Républicaine",
+        "chevaux": [
+          13,
+          12,
+          5,
+          15,
+          16,
+          11,
+          8,
+          4
+        ]
+      },
+      {
+        "nom": "L'Echo du Centre",
+        "chevaux": [
+          5,
+          13,
+          15,
+          14,
+          11,
+          4,
+          12,
+          2
+        ]
+      },
+      {
+        "nom": "Week-End",
+        "chevaux": [
+          5,
+          13,
+          8,
+          16,
+          15,
+          14,
+          11,
+          7
+        ]
+      },
+      {
+        "nom": "L'Eveil",
+        "chevaux": [
+          13,
+          15,
+          8,
+          12,
+          5,
+          11,
+          7,
+          16
+        ]
+      },
+      {
+        "nom": "La Marseillaise",
+        "chevaux": [
+          15,
+          5,
+          13,
+          12,
+          4,
+          8,
+          16,
+          11
+        ]
+      },
+      {
+        "nom": "L'indépendant",
+        "chevaux": [
+          15,
+          16,
+          11,
+          12,
+          14,
+          4,
+          13,
+          17
+        ]
+      },
+      {
+        "nom": "Le Dauphiné Libéré",
+        "chevaux": [
+          16,
+          13,
+          12,
+          11,
+          8,
+          15,
+          5,
+          14
+        ]
+      },
+      {
+        "nom": "Midi-Libre",
+        "chevaux": [
+          15,
+          16,
+          13,
+          11,
+          8,
+          5,
+          4,
+          14
+        ]
+      },
+      {
+        "nom": "Le Télégramme de Brest",
+        "chevaux": [
+          15,
+          11,
+          16,
+          12,
+          13,
+          8,
+          2,
+          14
+        ]
+      },
+      {
+        "nom": "Ouest-France",
+        "chevaux": [
+          13,
+          16,
+          11,
+          5,
+          15,
+          7,
+          10,
+          17
+        ]
+      },
+      {
+        "nom": "Europe 1",
+        "chevaux": [
+          13,
+          14,
+          2,
+          15,
+          8,
+          11,
+          7,
+          16
+        ]
+      },
+      {
+        "nom": "Le Courrier Picard",
+        "chevaux": [
+          15,
+          16,
+          11,
+          13,
+          5,
+          12,
+          10,
+          4
+        ]
+      },
+      {
+        "nom": "Le Quotidien de la Réunion",
+        "chevaux": [
+          13,
+          11,
+          15,
+          5,
+          16,
+          4,
+          14,
+          12
+        ]
+      },
+      {
+        "nom": "La Montagne",
+        "chevaux": [
+          13,
+          11,
+          15,
+          5,
+          12,
+          4,
+          2,
+          16
+        ]
+      },
+      {
+        "nom": "La République du Centre",
+        "chevaux": [
+          16,
+          15,
+          12,
+          5,
+          13,
+          11,
+          8,
+          4
+        ]
+      },
+      {
+        "nom": "Charente Libre",
+        "chevaux": [
+          11,
+          4,
+          15,
+          16,
+          13,
+          5,
+          12,
+          10
+        ]
+      },
+      {
+        "nom": "Bilto",
+        "chevaux": [
+          13,
+          15,
+          2,
+          8,
+          16,
+          7,
+          14,
+          17
+        ]
+      },
+      {
+        "nom": "Aisne Nouvelle",
+        "chevaux": [
+          15,
+          13,
+          5,
+          16,
+          8,
+          11,
+          4,
+          12
+        ]
+      }
+    ]
+  },
+  "hier": {
+    "date": "2026-11-02",
+    "hippodrome": "Fontainebleau",
+    "arrivee": [
+      1,
+      5,
+      3,
+      6,
+      11
+    ],
+    "rapports": {
+      "quinte_desordre": 22.54,
+      "bonus4": 9.66,
+      "bonus3": 4.02,
+      "simple_place": {
+        "1": 1.72,
+        "5": 2.47,
+        "3": 5.62
+      }
+    },
+    "presse_bilan": "la synthèse avait les 5 chevaux de l'arrivée dans son top 8, dix journaux ont eu 5 sur 5, seize en ont eu 4 et quatre en ont eu 3."
+  },
+  "sources": {
+    "presse": "ok",
+    "cotes": "indisponible",
+    "stats": "indisponible",
+    "hier": "ok"
+  }
+}
