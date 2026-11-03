@@ -1,0 +1,469 @@
+{
+  "date": "2026-10-31",
+  "genere_le": "7h31",
+  "course": {
+    "hippodrome": "Vincennes",
+    "prix": "Prix de la Marne",
+    "rc": "R1 C4",
+    "heure": "13h50",
+    "detail": "Trot attelé, 2 700 m, 16 partants.",
+    "partants": 16,
+    "grande_course": true
+  },
+  "non_partants": [
+    5
+  ],
+  "partants": [
+    {
+      "num": 1,
+      "nom": "Joyau des Prés",
+      "cote_probable": 9.0,
+      "pct_enjeux": 6.1,
+      "stats": "2 victoires en 4 courses sur ce parcours, jockey à 18 % de réussite sur la réunion.",
+      "age": "6 ans, hongre",
+      "driver": "M. Abrivard",
+      "entraineur": "P. Levesque",
+      "musique": "2a 1a 5a 3a Da (25) 1a 4a"
+    },
+    {
+      "num": 2,
+      "nom": "Oslo du Rib",
+      "cote_probable": 14.0,
+      "pct_enjeux": 4.9,
+      "stats": "",
+      "age": "7 ans, mâle",
+      "driver": "F. Nivard",
+      "entraineur": "S. Guarato",
+      "musique": "6a 4a 2a 0a 3a (25) 7a 1a"
+    },
+    {
+      "num": 3,
+      "nom": "Rapide du Val",
+      "cote_probable": 4.5,
+      "pct_enjeux": 17.2,
+      "stats": "Placé 5 fois sur ses 6 dernières sorties, entraîneur à 21 % dans les Quintés de l'année.",
+      "age": "5 ans, femelle",
+      "driver": "E. Raffin",
+      "entraineur": "J.-M. Bazire",
+      "musique": "1a 2a 3a 2a 1a (25) 3a 2a"
+    },
+    {
+      "num": 4,
+      "nom": "Hermine Bleue",
+      "cote_probable": 22.0,
+      "pct_enjeux": 2.8,
+      "stats": "",
+      "age": "8 ans, femelle",
+      "driver": "A. Barrier",
+      "entraineur": "T. Duvaldestin",
+      "musique": "0a Da 8a 5a 0a (25) 6a 2a"
+    },
+    {
+      "num": 5,
+      "nom": "Galant de Ray",
+      "cote_probable": null,
+      "pct_enjeux": null,
+      "stats": "",
+      "age": "6 ans, mâle",
+      "driver": "D. Thomain",
+      "entraineur": "R. Derieux",
+      "musique": "3a 5a 1a 4a 2a (25) 0a 1a"
+    },
+    {
+      "num": 6,
+      "nom": "Lune de Sologne",
+      "cote_probable": 11.0,
+      "pct_enjeux": 5.5,
+      "stats": "",
+      "age": "6 ans, femelle",
+      "driver": "Y. Lebourgeois",
+      "entraineur": "L.-C. Abrivard",
+      "musique": "4a 3a 6a 2a 5a (25) 2a 3a"
+    },
+    {
+      "num": 7,
+      "nom": "Idéal Horizon",
+      "cote_probable": 6.0,
+      "pct_enjeux": 12.0,
+      "stats": "Invaincu à Vincennes cette saison en 3 sorties.",
+      "age": "5 ans, mâle",
+      "driver": "B. Goop",
+      "entraineur": "B. Goop",
+      "musique": "1a 1a 1a 4a 2a (25) 5a 1a"
+    },
+    {
+      "num": 8,
+      "nom": "Nuit Fauve",
+      "cote_probable": 30.0,
+      "pct_enjeux": 1.9,
+      "stats": "",
+      "age": "9 ans, femelle",
+      "driver": "G. Gelormini",
+      "entraineur": "V. Martens",
+      "musique": "0a 7a 9a 0a 6a (25) 4a 8a"
+    },
+    {
+      "num": 9,
+      "nom": "Kerlouan",
+      "cote_probable": 18.0,
+      "pct_enjeux": 3.4,
+      "stats": "",
+      "age": "7 ans, mâle",
+      "driver": "P. Vercruysse",
+      "entraineur": "J. Westholm",
+      "musique": "5a 2a 7a 3a 4a (25) 1a 6a"
+    },
+    {
+      "num": 10,
+      "nom": "Volcan d'Ambre",
+      "cote_probable": 45.0,
+      "pct_enjeux": 1.1,
+      "stats": "",
+      "age": "8 ans, hongre",
+      "driver": "C. Martens",
+      "entraineur": "C. Martens",
+      "musique": "0a 0a Da 8a 7a (25) 9a 0a"
+    },
+    {
+      "num": 11,
+      "nom": "Sirène Noire",
+      "cote_probable": 25.0,
+      "pct_enjeux": 2.3,
+      "stats": "",
+      "age": "6 ans, femelle",
+      "driver": "M. Mottier",
+      "entraineur": "S. Roger",
+      "musique": "7a 4a 0a 3a 8a (25) 2a 5a"
+    },
+    {
+      "num": 12,
+      "nom": "Belle de Chartres",
+      "cote_probable": 3.2,
+      "pct_enjeux": 24.5,
+      "stats": "3 victoires sur ses 3 dernières courses, 2 sur 2 avec ce driver.",
+      "age": "5 ans, femelle",
+      "driver": "J.-M. Bazire",
+      "entraineur": "J.-M. Bazire",
+      "musique": "1a 1a 1a 2a 3a (25) 1a 1a"
+    },
+    {
+      "num": 13,
+      "nom": "Tango Royal",
+      "cote_probable": 35.0,
+      "pct_enjeux": 1.5,
+      "stats": "",
+      "age": "9 ans, mâle",
+      "driver": "A. Lamy",
+      "entraineur": "P. Allaire",
+      "musique": "8a 0a 6a Da 0a (25) 7a 3a"
+    },
+    {
+      "num": 14,
+      "nom": "Kalinka Verte",
+      "cote_probable": 16.0,
+      "pct_enjeux": 3.0,
+      "stats": "Jamais courue sur 2 700 m, 1 succès en 7 courses à Vincennes.",
+      "age": "6 ans, femelle",
+      "driver": "M. Abrivard",
+      "entraineur": "L. Baudron",
+      "musique": "3a 1a 6a 2a 0a (25) 4a 1a"
+    },
+    {
+      "num": 15,
+      "nom": "Prince Ardent",
+      "cote_probable": 12.0,
+      "pct_enjeux": 5.2,
+      "stats": "",
+      "age": "7 ans, mâle",
+      "driver": "F. Ouvrie",
+      "entraineur": "F. Souloy",
+      "musique": "2a 3a 1a 4a 2a (25) 1a 3a"
+    },
+    {
+      "num": 16,
+      "nom": "Zéphyr d'Isigny",
+      "cote_probable": 20.0,
+      "pct_enjeux": 2.6,
+      "stats": "",
+      "age": "8 ans, mâle",
+      "driver": "T. Le Beller",
+      "entraineur": "P. Belloche",
+      "musique": "6a 5a 4a 7a 3a (25) 0a 2a"
+    }
+  ],
+  "presse": {
+    "nb_journaux": 30,
+    "synthese": [
+      {
+        "num": 12,
+        "nom": "Belle de Chartres",
+        "points": 212,
+        "citations": 30,
+        "premiers_choix": 11
+      },
+      {
+        "num": 3,
+        "nom": "Rapide du Val",
+        "points": 188,
+        "citations": 29,
+        "premiers_choix": 8
+      },
+      {
+        "num": 7,
+        "nom": "Idéal Horizon",
+        "points": 171,
+        "citations": 28,
+        "premiers_choix": 6
+      },
+      {
+        "num": 15,
+        "nom": "Prince Ardent",
+        "points": 118,
+        "citations": 25,
+        "premiers_choix": 2
+      },
+      {
+        "num": 1,
+        "nom": "Joyau des Prés",
+        "points": 109,
+        "citations": 24,
+        "premiers_choix": 1
+      },
+      {
+        "num": 6,
+        "nom": "Lune de Sologne",
+        "points": 74,
+        "citations": 20,
+        "premiers_choix": 1
+      },
+      {
+        "num": 2,
+        "nom": "Oslo du Rib",
+        "points": 61,
+        "citations": 17,
+        "premiers_choix": 0
+      },
+      {
+        "num": 9,
+        "nom": "Kerlouan",
+        "points": 40,
+        "citations": 14,
+        "premiers_choix": 1
+      },
+      {
+        "num": 14,
+        "nom": "Kalinka Verte",
+        "points": 26,
+        "citations": 9,
+        "premiers_choix": 0
+      },
+      {
+        "num": 16,
+        "nom": "Zéphyr d'Isigny",
+        "points": 15,
+        "citations": 7,
+        "premiers_choix": 0
+      },
+      {
+        "num": 11,
+        "nom": "Sirène Noire",
+        "points": 9,
+        "citations": 5,
+        "premiers_choix": 0
+      },
+      {
+        "num": 4,
+        "nom": "Hermine Bleue",
+        "points": 7,
+        "citations": 4,
+        "premiers_choix": 0
+      }
+    ],
+    "journaux": [
+      {
+        "nom": "Paris Turf",
+        "chevaux": [
+          12,
+          3,
+          7,
+          15,
+          1,
+          6,
+          2,
+          9
+        ]
+      },
+      {
+        "nom": "Week-End",
+        "chevaux": [
+          3,
+          12,
+          14,
+          7,
+          1,
+          15,
+          6,
+          16
+        ]
+      },
+      {
+        "nom": "Bilto",
+        "chevaux": [
+          12,
+          7,
+          3,
+          1,
+          15,
+          2,
+          6,
+          9
+        ]
+      },
+      {
+        "nom": "Tiercé Magazine",
+        "chevaux": [
+          7,
+          12,
+          3,
+          15,
+          1,
+          6,
+          9,
+          2
+        ]
+      },
+      {
+        "nom": "Le Parisien",
+        "chevaux": [
+          12,
+          3,
+          7,
+          1,
+          15,
+          6,
+          2,
+          11
+        ]
+      },
+      {
+        "nom": "Ouest-France",
+        "chevaux": [
+          12,
+          3,
+          15,
+          7,
+          1,
+          6,
+          9,
+          2
+        ]
+      },
+      {
+        "nom": "Equidia",
+        "chevaux": [
+          3,
+          12,
+          7,
+          15,
+          6,
+          1,
+          2,
+          16
+        ]
+      },
+      {
+        "nom": "Europe 1",
+        "chevaux": [
+          12,
+          7,
+          3,
+          1,
+          15,
+          9,
+          6,
+          4
+        ]
+      },
+      {
+        "nom": "Le Télégramme",
+        "chevaux": [
+          12,
+          3,
+          7,
+          15,
+          1,
+          2,
+          6,
+          9
+        ]
+      },
+      {
+        "nom": "La Voix du Nord",
+        "chevaux": [
+          3,
+          7,
+          12,
+          1,
+          15,
+          6,
+          14,
+          2
+        ]
+      },
+      {
+        "nom": "Sud Ouest",
+        "chevaux": [
+          12,
+          7,
+          3,
+          15,
+          6,
+          1,
+          9,
+          16
+        ]
+      },
+      {
+        "nom": "Nice-Matin",
+        "chevaux": [
+          7,
+          3,
+          12,
+          15,
+          1,
+          2,
+          6,
+          11
+        ]
+      }
+    ]
+  },
+  "hier": {
+    "date": "2026-10-30",
+    "hippodrome": "Saint-Cloud",
+    "arrivee": [
+      4,
+      12,
+      7,
+      1,
+      9
+    ],
+    "rapports": {
+      "quinte_desordre": 412.8,
+      "bonus4": 38.2,
+      "bonus3": 6.4,
+      "simple_place": {
+        "4": 5.1,
+        "12": 1.6,
+        "7": 2.3
+      }
+    },
+    "presse_bilan": "la presse avait 3 chevaux sur 5, aucun journal n'a trouvé les 5, Paris Turf en avait 4."
+  },
+  "sources": {
+    "presse": "ok",
+    "cotes": "ok",
+    "stats": "ok",
+    "hier": "ok"
+  }
+}
