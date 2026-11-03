@@ -1,0 +1,1156 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Le Ticket</title>
+<style>
+  :root{
+    color-scheme:light;
+    --bg:#f3eee3; --paper:#fbf8f1; --card:#ffffff; --ink:#1d2024; --muted:#6a6f75; --rule:#e4ddcf;
+    --green:#0f5c3a; --green-2:#17754b; --green-soft:#e2efe6; --gold:#c99a2e; --gold-soft:#f8efd6;
+    --red:#b6382d; --red-soft:#f8e4e1; --amber:#c9801a; --grey:#a0a5aa; --cream:#f7f1e3; --focus:#1a56db;
+    --shadow:0 3px 14px rgba(40,30,10,.08);
+  }
+  @media(prefers-color-scheme:dark){:root{
+    color-scheme:dark;
+    --bg:#121416; --paper:#1a1d20; --card:#202428; --ink:#f0f1f2; --muted:#a7adb3; --rule:#30363c;
+    --green:#4fbf7f; --green-2:#3da86c; --green-soft:#17352a; --gold:#e3b84f; --gold-soft:#3a3115;
+    --red:#f08b7f; --red-soft:#3d1f1b; --amber:#e7a94a; --grey:#7d848b; --cream:#2a2d31; --focus:#8ab4f8;
+    --shadow:0 3px 14px rgba(0,0,0,.4);
+  }}
+  *{box-sizing:border-box}
+  html{background:var(--bg)}
+  body{margin:0 auto;max-width:940px;padding:16px 16px 70px;font-family:"Segoe UI",Verdana,Geneva,sans-serif;font-size:19px;line-height:1.5;color:var(--ink)}
+  h1,h2,h3,p{margin:0}
+  button{font:inherit;cursor:pointer}
+  :focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+  /* Manchette */
+  .hero{background:linear-gradient(135deg,#0f5c3a 0%,#17754b 60%,#1f8a58 100%);color:#fbf8f1;border-radius:18px;padding:26px 28px 22px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .hero:after{content:"";position:absolute;left:0;right:0;bottom:0;height:12px;background:repeating-linear-gradient(90deg,#fbf8f1 0 18px,#1d2024 18px 36px)}
+  .hero .row{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;flex-wrap:wrap}
+  .hero h1{font-family:Georgia,"Times New Roman",serif;font-size:52px;line-height:1;letter-spacing:.5px}
+  .hero h1 small{display:block;font-family:"Segoe UI",Verdana,sans-serif;font-size:14px;letter-spacing:4px;text-transform:uppercase;opacity:.85;margin-top:8px}
+  .hero .ed{text-align:right;font-size:16px;opacity:.9}
+  .hero .ed b{display:block;font-size:20px;font-weight:600;opacity:1}
+  .hero .shoe-big{position:absolute;right:-30px;top:-30px;width:190px;height:190px;opacity:.12}
+
+  .banner{padding:12px 16px;margin:14px 0 0;font-size:16px;border-radius:12px;background:var(--gold-soft);color:var(--amber);display:none}
+  .banner.on{display:block}
+  .sample{font-size:15px;background:var(--gold-soft);color:var(--amber);padding:10px 14px;border-radius:12px;margin-top:14px}
+
+  /* Onglets */
+  .tabs{display:flex;flex-wrap:wrap;gap:6px;margin:18px 0 24px;background:var(--rule);padding:6px;border-radius:999px}
+  .tabs button{flex:1 1 auto;background:none;border:0;border-radius:999px;padding:12px 14px;font-size:17px;color:var(--muted);transition:background .15s,color .15s}
+  .tabs button.on{background:var(--card);color:var(--green);font-weight:bold;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+  .pane{display:none}.pane.on{display:block}
+
+  /* Verdict du jour */
+  .verdict{display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-bottom:18px}
+  .badge{display:inline-block;padding:14px 24px;border-radius:14px;font-size:24px;font-weight:bold;letter-spacing:.5px;background:var(--green);color:#fff;box-shadow:var(--shadow)}
+  .verdict.no .badge{background:var(--grey);color:#fff}
+  .verdict.blocked .badge{background:var(--red)}
+  .verdict p{color:var(--muted);font-size:18px}
+  .shoes{display:flex;align-items:center;gap:3px;margin-top:4px}
+  .shoes svg{width:30px;height:30px;color:var(--gold);margin-right:2px}
+  .shoes .off{color:var(--rule)}
+  .shoes span{font-size:15px;color:var(--muted);margin-left:8px}
+
+  .racecard{background:var(--card);border-radius:16px;box-shadow:var(--shadow);padding:18px 22px;margin-bottom:26px;display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+  .racecard .time{flex:none;background:var(--ink);color:var(--paper);border-radius:12px;padding:10px 16px;font-family:Georgia,serif;font-size:30px;line-height:1}
+  .racecard .time small{display:block;font-family:"Segoe UI",sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;opacity:.8;margin-bottom:4px}
+  .racecard .txt b{font-family:Georgia,serif;font-size:24px;font-weight:bold;display:block}
+  .racecard .txt{font-size:17px;color:var(--muted)}
+  .racecard .txt .big{display:inline-block;margin-top:6px;background:var(--gold-soft);color:var(--amber);padding:3px 10px;border-radius:8px;font-size:15px;font-weight:bold}
+
+  section{margin-bottom:34px}
+  section>h2{font-family:Georgia,serif;font-size:28px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+  .help{margin-left:8px;width:28px;height:28px;border:2px solid var(--muted);border-radius:50%;font-size:16px;color:var(--muted);background:none;padding:0;line-height:24px;text-align:center;font-family:"Segoe UI",sans-serif}
+  .tip{display:none;background:var(--gold-soft);color:var(--ink);padding:12px 16px;margin:0 0 14px;font-size:16px;border-radius:12px;border-left:5px solid var(--gold)}
+  .tip.on{display:block}
+
+  /* Bulletins */
+  .duel{display:flex;gap:20px;flex-wrap:wrap}
+  .slip{flex:1 1 330px;background:var(--cream);border-radius:16px;padding:20px 22px 18px;box-shadow:var(--shadow);position:relative;border:1px solid var(--rule)}
+  .slip:before{content:"";position:absolute;left:14px;right:14px;top:0;height:6px;border-radius:0 0 6px 6px;background:var(--ink)}
+  .slip.v:before{background:var(--red)}
+  .slip .who{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-top:6px}
+  .slip h3{font-family:Georgia,serif;font-size:28px}
+  .slip .tag{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--muted)}
+  .slip .aim{color:var(--muted);font-size:16px;margin:6px 0 16px;min-height:48px}
+  .nums{display:flex;flex-wrap:wrap}
+  .num{width:66px;height:66px;line-height:60px;border-radius:50%;text-align:center;font-size:30px;font-weight:bold;border:3px solid var(--ink);margin:0 10px 26px 0;background:var(--card);color:var(--ink);position:relative;transition:transform .15s}
+  .num.presse,.num.base{background:var(--ink);color:var(--paper)}
+  .num.valeur{background:var(--green);border-color:var(--green);color:#fff}
+  .num.outsider{background:var(--red);border-color:var(--red);color:#fff}
+  .num small{position:absolute;left:-10px;right:-10px;bottom:-22px;font-size:12px;color:var(--muted);line-height:1;font-weight:600;letter-spacing:1px;text-transform:uppercase}
+  .slip .names{font-size:15px;color:var(--muted);margin-top:-6px}
+  .slip .foot{display:flex;justify-content:space-between;align-items:center;margin-top:14px;padding-top:12px;border-top:2px dashed var(--rule)}
+  .slip .stake{font-family:Georgia,serif;font-size:26px;font-weight:bold}
+  .slip .formule{font-size:15px;color:var(--muted)}
+  .legendline{font-size:15px;color:var(--muted);margin:14px 0 18px;display:flex;gap:18px;flex-wrap:wrap}
+  .legendline span{margin-right:18px}.legendline i{display:inline-block;width:16px;height:16px;border-radius:50%;vertical-align:middle;margin-right:6px}
+  .legendline i.b{background:var(--ink)}.legendline i.v{background:var(--green)}.legendline i.o{background:var(--red)}
+
+  .placecard{display:flex;align-items:center;gap:18px;flex-wrap:wrap;background:var(--card);border-radius:16px;box-shadow:var(--shadow);padding:16px 20px}
+  .placecard .num{margin:0}
+  .placecard .txt{flex:1 1 300px;font-size:18px}
+  .placecard .txt b{font-family:Georgia,serif;font-size:22px}
+  .placecard .stake{font-family:Georgia,serif;font-size:26px;font-weight:bold}
+
+  ul{margin:0;padding-left:22px}
+  .why li{margin-bottom:10px;font-size:19px}
+  .why{background:var(--card);border-radius:16px;box-shadow:var(--shadow);padding:18px 22px 18px 40px}
+  .note{font-size:16px;color:var(--muted);margin-top:10px}
+
+  .budgetcard{background:var(--card);border-radius:16px;box-shadow:var(--shadow);padding:18px 22px}
+  .budget{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .budget .amount{font-family:Georgia,serif;font-size:30px;font-weight:bold}
+  .budget .amount small{font-family:"Segoe UI",sans-serif;font-size:16px;color:var(--muted);font-weight:normal;margin-left:6px}
+  .bar{flex:1 1 220px;height:18px;background:var(--rule);position:relative;border-radius:9px;overflow:hidden}
+  .bar i{position:absolute;top:0;bottom:0;left:0;background:var(--green);border-radius:9px}
+  .bar.over i{background:var(--red)}
+  .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+  .btn{padding:14px 24px;border-radius:12px;border:3px solid var(--green);background:var(--green);color:#fff;font-size:19px;font-weight:600;transition:transform .1s}
+  .btn:active{transform:scale(.98)}
+  .btn.sec{background:var(--card);color:var(--green)}
+  .btn.ghost{background:none;border-color:var(--rule);color:var(--muted)}
+  .btn[disabled]{opacity:.45;cursor:default}
+  .btn.tog{background:var(--card);color:var(--ink);border-color:var(--rule)}.btn.tog.on{background:var(--green);color:#fff;border-color:var(--green)}
+  .ticketlist li{margin-bottom:8px}.ticketlist .g{color:var(--green);font-weight:bold}.ticketlist .p{color:var(--muted)}
+  .ok{color:var(--green);font-weight:bold}
+
+  /* Chevaux */
+  .toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;align-items:center}
+  .toolbar span{color:var(--muted);font-size:16px;margin-right:4px}
+  .chip{border:2px solid var(--rule);background:var(--card);padding:8px 16px;font-size:16px;border-radius:999px;color:var(--muted)}
+  .chip.on{border-color:var(--green);color:var(--green);font-weight:bold;background:var(--green-soft)}
+  .horse{background:var(--card);border-radius:16px;box-shadow:var(--shadow);padding:14px 16px 14px 14px;margin-bottom:12px;display:flex;gap:16px;align-items:flex-start;cursor:pointer;border-left:8px solid transparent;transition:transform .12s}
+  .horse:hover{transform:translateY(-1px)}
+  .horse.r-base{border-left-color:var(--ink)}.horse.r-valeur{border-left-color:var(--green)}.horse.r-outsider{border-left-color:var(--red)}
+  .horse.np{opacity:.45}
+  .horse .num{flex:none;width:56px;height:56px;line-height:50px;font-size:26px;margin:0 6px 0 0}
+  .horse .body{flex:1 1 auto;min-width:0}
+  .horse .top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+  .horse .name{font-family:Georgia,serif;font-size:23px;font-weight:bold}
+  .horse .cote{font-family:Georgia,serif;font-size:24px;font-weight:bold;white-space:nowrap}
+  .horse .cote small{font-family:"Segoe UI",sans-serif;font-size:13px;color:var(--muted);font-weight:normal;margin-right:4px}
+  .horse .sub{font-size:15px;color:var(--muted);margin-top:2px}
+  .form{display:flex;gap:5px;margin:10px 0 8px;flex-wrap:wrap;align-items:center}
+  .f{width:32px;height:32px;line-height:32px;text-align:center;font-size:15px;font-weight:bold;border-radius:9px;color:#fff;background:var(--grey);margin-right:4px}
+  .f.g1{background:var(--gold);color:#1d2024}.f.g2{background:var(--green-2)}.f.g3{background:var(--amber)}.f.g5{background:var(--red)}
+  .f.yr{background:none;color:var(--muted);width:auto;font-weight:normal;font-size:12px}
+  .meta{display:flex;gap:14px;flex-wrap:wrap;font-size:15px;color:var(--muted);align-items:center}
+  .meta span{margin-right:12px}
+  .meta b{color:var(--ink)}
+  .verd{font-size:13px;padding:3px 10px;border-radius:999px;background:var(--rule);color:var(--ink);font-weight:600;letter-spacing:.3px}
+  .verd.valeur{background:var(--green-soft);color:var(--green)}.verd.surcote{background:var(--red-soft);color:var(--red)}
+  .press-bar{height:8px;background:var(--rule);border-radius:4px;margin-top:8px;position:relative;max-width:280px}
+  .press-bar i{position:absolute;top:0;bottom:0;left:0;background:var(--ink);border-radius:4px}
+  .detail{display:none;margin-top:12px;border-top:1px solid var(--rule);padding-top:12px;font-size:16px}
+  .horse.open .detail{display:block}
+  .detail p{margin-bottom:6px}
+
+  /* Mon ticket */
+  .grid{display:flex;flex-wrap:wrap;margin:10px 0 16px}
+  .grid button{width:66px;height:66px;margin:0 10px 10px 0;border-radius:50%;border:3px solid var(--ink);background:var(--card);color:var(--ink);font-size:28px;font-weight:bold;transition:transform .12s,background .12s}
+  .grid button.on{background:var(--green);border-color:var(--green);color:#fff;transform:scale(1.06)}
+  .grid button.np{opacity:.3;text-decoration:line-through}
+  .panel{background:var(--card);border-radius:16px;box-shadow:var(--shadow);padding:16px 20px;margin-bottom:14px}
+  .panel h3{font-family:Georgia,serif;font-size:22px;margin-bottom:8px}
+  .gauge{display:flex;align-items:center;gap:12px;margin:8px 0;flex-wrap:wrap}
+  .gauge .bar{flex:1 1 160px;height:12px;margin-right:12px}
+  .gauge .lbl{min-width:170px;font-size:16px;font-weight:600;margin-right:12px}
+  .gauge .val{font-size:15px;color:var(--muted);flex:1 1 220px}
+  .cmp{display:flex;gap:12px;flex-wrap:wrap;font-size:15px;color:var(--muted)}
+  .cmp div{flex:1 1 180px;margin:0 10px 10px 0;padding:12px 14px;background:var(--cream);border-radius:12px}
+  .cmp b{display:block;font-family:Georgia,serif;font-size:26px;color:var(--ink);margin-top:2px}
+
+  /* Presse */
+  .tablewrap{background:var(--card);border-radius:16px;box-shadow:var(--shadow);overflow:hidden}
+  table{border-collapse:collapse;width:100%;font-size:17px}
+  th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--rule);vertical-align:middle}
+  tr:last-child td{border-bottom:0}
+  tbody tr:nth-child(even) td{background:var(--paper)}
+  th{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;background:var(--paper)}
+  td.n{font-family:Georgia,serif;font-weight:bold;font-size:22px;white-space:nowrap}
+  tr.hit td{background:var(--green-soft)}
+  .j{display:flex;gap:5px;flex-wrap:wrap}
+  .j i{font-style:normal;display:inline-block;min-width:32px;text-align:center;padding:3px 5px;border:1px solid var(--rule);border-radius:8px;font-size:15px;background:var(--card);margin-right:4px}
+  .j i.hit{background:var(--green);color:#fff;border-color:var(--green);font-weight:bold}
+  select{font:inherit;font-size:17px;padding:10px 12px;border:2px solid var(--rule);border-radius:10px;background:var(--card);color:var(--ink)}
+  .fiab td b{font-family:Georgia,serif;font-size:22px}
+
+  /* Suivi */
+  .weeks{display:flex;align-items:flex-end;gap:12px;height:160px;border-bottom:2px solid var(--rule);padding:0 6px;margin:14px 0 6px}
+  .wk{flex:1 1 0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%}
+  .wk i{display:block;width:72%;background:var(--green);border-radius:8px 8px 0 0}
+  .wk i.neg{background:var(--red)}
+  .wk small{font-size:13px;color:var(--muted);margin-top:6px}
+  .wk .v{font-size:14px;color:var(--muted);margin-bottom:4px}
+
+  /* Lexique */
+  details{background:var(--card);border-radius:14px;box-shadow:var(--shadow);padding:6px 18px;margin-bottom:10px}
+  summary{cursor:pointer;font-family:Georgia,serif;font-weight:bold;font-size:20px;padding:10px 0}
+  details p{padding:2px 0 12px;font-size:17px}
+
+  .legal{font-size:14px;color:var(--muted);border-top:1px solid var(--rule);padding-top:12px;margin-top:34px}
+
+  @media(max-width:600px){
+    body{font-size:17px;padding:10px 10px 40px}
+    .hero{padding:20px 18px 18px;border-radius:14px}.hero h1{font-size:38px}
+    .badge{font-size:20px;padding:12px 18px}
+    .tabs button{font-size:15px;padding:10px 8px}
+    .num{width:58px;height:58px;line-height:52px;font-size:26px}
+    .grid button{width:58px;height:58px;font-size:24px}
+    .racecard .time{font-size:24px}
+  }
+  @media print{
+    .tabs,.actions,.help,.banner,.sample,.legal,.toolbar,.hero .shoe-big{display:none!important}
+    .pane{display:none!important}.pane.print{display:block!important}
+    body{padding:0;font-size:15px}.hero{color:#000;background:none;border:2px solid #000}.hero:after{display:none}
+    .slip,.horse,.panel{box-shadow:none;border:1px solid #999;break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<script type="application/json" id="data">
+{
+ "exemple": true,
+ "date": "2026-10-31",
+ "date_texte": "samedi 31 octobre 2026",
+ "genere_le": "7h31",
+ "statut": "jouer",
+ "raison_statut": "",
+ "confiance": 4,
+ "course": {
+  "hippodrome": "Vincennes",
+  "prix": "Prix de la Marne",
+  "rc": "R1 C4",
+  "heure": "13h50",
+  "detail": "Trot attelé, 2 700 m, 16 partants",
+  "grande_course": true
+ },
+ "non_partants": [
+  5
+ ],
+ "nb_journaux": 30,
+ "partants": [
+  {
+   "num": 1,
+   "nom": "Joyau des Prés",
+   "age": "6 ans, hongre",
+   "driver": "M. Abrivard",
+   "entraineur": "P. Levesque",
+   "musique": "2a 1a 5a 3a Da (25) 1a 4a",
+   "cote": 9.0,
+   "pct": 6.1,
+   "points": 109,
+   "citations": 24,
+   "premiers": 1,
+   "stats": "2 victoires en 4 courses sur ce parcours, driver à 18 % de réussite sur la réunion."
+  },
+  {
+   "num": 2,
+   "nom": "Oslo du Rib",
+   "age": "7 ans, mâle",
+   "driver": "F. Nivard",
+   "entraineur": "S. Guarato",
+   "musique": "6a 4a 2a 0a 3a (25) 7a 1a",
+   "cote": 14.0,
+   "pct": 4.9,
+   "points": 61,
+   "citations": 17,
+   "premiers": 0,
+   "stats": ""
+  },
+  {
+   "num": 3,
+   "nom": "Rapide du Val",
+   "age": "5 ans, femelle",
+   "driver": "E. Raffin",
+   "entraineur": "J.-M. Bazire",
+   "musique": "1a 2a 3a 2a 1a (25) 3a 2a",
+   "cote": 4.5,
+   "pct": 17.2,
+   "points": 188,
+   "citations": 29,
+   "premiers": 8,
+   "stats": "Placée 5 fois sur ses 6 dernières sorties, entraîneur à 21 % dans les Quintés de l'année."
+  },
+  {
+   "num": 4,
+   "nom": "Hermine Bleue",
+   "age": "8 ans, femelle",
+   "driver": "A. Barrier",
+   "entraineur": "T. Duvaldestin",
+   "musique": "0a Da 8a 5a 0a (25) 6a 2a",
+   "cote": 22.0,
+   "pct": 2.8,
+   "points": 7,
+   "citations": 4,
+   "premiers": 0,
+   "stats": ""
+  },
+  {
+   "num": 5,
+   "nom": "Galant de Ray",
+   "age": "6 ans, mâle",
+   "driver": "D. Thomain",
+   "entraineur": "R. Derieux",
+   "musique": "3a 5a 1a 4a 2a (25) 0a 1a",
+   "cote": null,
+   "pct": null,
+   "points": 0,
+   "citations": 0,
+   "premiers": 0,
+   "stats": ""
+  },
+  {
+   "num": 6,
+   "nom": "Lune de Sologne",
+   "age": "6 ans, femelle",
+   "driver": "Y. Lebourgeois",
+   "entraineur": "L.-C. Abrivard",
+   "musique": "4a 3a 6a 2a 5a (25) 2a 3a",
+   "cote": 11.0,
+   "pct": 5.5,
+   "points": 74,
+   "citations": 20,
+   "premiers": 1,
+   "stats": ""
+  },
+  {
+   "num": 7,
+   "nom": "Idéal Horizon",
+   "age": "5 ans, mâle",
+   "driver": "B. Goop",
+   "entraineur": "B. Goop",
+   "musique": "1a 1a 1a 4a 2a (25) 5a 1a",
+   "cote": 6.0,
+   "pct": 12.0,
+   "points": 171,
+   "citations": 28,
+   "premiers": 6,
+   "stats": "Invaincu à Vincennes cette saison en 3 sorties."
+  },
+  {
+   "num": 8,
+   "nom": "Nuit Fauve",
+   "age": "9 ans, femelle",
+   "driver": "G. Gelormini",
+   "entraineur": "V. Martens",
+   "musique": "0a 7a 9a 0a 6a (25) 4a 8a",
+   "cote": 30.0,
+   "pct": 1.9,
+   "points": 0,
+   "citations": 0,
+   "premiers": 0,
+   "stats": ""
+  },
+  {
+   "num": 9,
+   "nom": "Kerlouan",
+   "age": "7 ans, mâle",
+   "driver": "P. Vercruysse",
+   "entraineur": "J. Westholm",
+   "musique": "5a 2a 7a 3a 4a (25) 1a 6a",
+   "cote": 18.0,
+   "pct": 3.4,
+   "points": 40,
+   "citations": 14,
+   "premiers": 1,
+   "stats": ""
+  },
+  {
+   "num": 10,
+   "nom": "Volcan d'Ambre",
+   "age": "8 ans, hongre",
+   "driver": "C. Martens",
+   "entraineur": "C. Martens",
+   "musique": "0a 0a Da 8a 7a (25) 9a 0a",
+   "cote": 45.0,
+   "pct": 1.1,
+   "points": 0,
+   "citations": 0,
+   "premiers": 0,
+   "stats": ""
+  },
+  {
+   "num": 11,
+   "nom": "Sirène Noire",
+   "age": "6 ans, femelle",
+   "driver": "M. Mottier",
+   "entraineur": "S. Roger",
+   "musique": "7a 4a 0a 3a 8a (25) 2a 5a",
+   "cote": 25.0,
+   "pct": 2.3,
+   "points": 9,
+   "citations": 5,
+   "premiers": 0,
+   "stats": ""
+  },
+  {
+   "num": 12,
+   "nom": "Belle de Chartres",
+   "age": "5 ans, femelle",
+   "driver": "J.-M. Bazire",
+   "entraineur": "J.-M. Bazire",
+   "musique": "1a 1a 1a 2a 3a (25) 1a 1a",
+   "cote": 3.2,
+   "pct": 24.5,
+   "points": 212,
+   "citations": 30,
+   "premiers": 11,
+   "stats": "3 victoires sur ses 3 dernières courses, 2 sur 2 avec ce driver."
+  },
+  {
+   "num": 13,
+   "nom": "Tango Royal",
+   "age": "9 ans, mâle",
+   "driver": "A. Lamy",
+   "entraineur": "P. Allaire",
+   "musique": "8a 0a 6a Da 0a (25) 7a 3a",
+   "cote": 35.0,
+   "pct": 1.5,
+   "points": 0,
+   "citations": 0,
+   "premiers": 0,
+   "stats": ""
+  },
+  {
+   "num": 14,
+   "nom": "Kalinka Verte",
+   "age": "6 ans, femelle",
+   "driver": "M. Abrivard",
+   "entraineur": "L. Baudron",
+   "musique": "3a 1a 6a 2a 0a (25) 4a 1a",
+   "cote": 16.0,
+   "pct": 3.0,
+   "points": 26,
+   "citations": 9,
+   "premiers": 0,
+   "stats": "Jamais courue sur 2 700 m, 1 succès en 7 courses à Vincennes."
+  },
+  {
+   "num": 15,
+   "nom": "Prince Ardent",
+   "age": "7 ans, mâle",
+   "driver": "F. Ouvrie",
+   "entraineur": "F. Souloy",
+   "musique": "2a 3a 1a 4a 2a (25) 1a 3a",
+   "cote": 12.0,
+   "pct": 5.2,
+   "points": 118,
+   "citations": 25,
+   "premiers": 2,
+   "stats": ""
+  },
+  {
+   "num": 16,
+   "nom": "Zéphyr d'Isigny",
+   "age": "8 ans, mâle",
+   "driver": "T. Le Beller",
+   "entraineur": "P. Belloche",
+   "musique": "6a 5a 4a 7a 3a (25) 0a 2a",
+   "cote": 20.0,
+   "pct": 2.6,
+   "points": 15,
+   "citations": 7,
+   "premiers": 0,
+   "stats": ""
+  }
+ ],
+ "journaux": [
+  {
+   "nom": "Paris Turf",
+   "chevaux": [
+    12,
+    3,
+    7,
+    15,
+    1,
+    6,
+    2,
+    9
+   ]
+  },
+  {
+   "nom": "Week-End",
+   "chevaux": [
+    3,
+    12,
+    14,
+    7,
+    1,
+    15,
+    6,
+    16
+   ]
+  },
+  {
+   "nom": "Bilto",
+   "chevaux": [
+    12,
+    7,
+    3,
+    1,
+    15,
+    2,
+    6,
+    9
+   ]
+  },
+  {
+   "nom": "Tiercé Magazine",
+   "chevaux": [
+    7,
+    12,
+    3,
+    15,
+    1,
+    6,
+    9,
+    2
+   ]
+  },
+  {
+   "nom": "Le Parisien",
+   "chevaux": [
+    12,
+    3,
+    7,
+    1,
+    15,
+    6,
+    2,
+    11
+   ]
+  },
+  {
+   "nom": "Ouest-France",
+   "chevaux": [
+    12,
+    3,
+    15,
+    7,
+    1,
+    6,
+    9,
+    2
+   ]
+  },
+  {
+   "nom": "Equidia",
+   "chevaux": [
+    3,
+    12,
+    7,
+    15,
+    6,
+    1,
+    2,
+    16
+   ]
+  },
+  {
+   "nom": "Europe 1",
+   "chevaux": [
+    12,
+    7,
+    3,
+    1,
+    15,
+    9,
+    6,
+    4
+   ]
+  },
+  {
+   "nom": "Le Télégramme",
+   "chevaux": [
+    12,
+    3,
+    7,
+    15,
+    1,
+    2,
+    6,
+    9
+   ]
+  },
+  {
+   "nom": "La Voix du Nord",
+   "chevaux": [
+    3,
+    7,
+    12,
+    1,
+    15,
+    6,
+    14,
+    2
+   ]
+  },
+  {
+   "nom": "Sud Ouest",
+   "chevaux": [
+    12,
+    7,
+    3,
+    15,
+    6,
+    1,
+    9,
+    16
+   ]
+  },
+  {
+   "nom": "Nice-Matin",
+   "chevaux": [
+    7,
+    3,
+    12,
+    15,
+    1,
+    2,
+    6,
+    11
+   ]
+  }
+ ],
+ "fiabilite_journaux": [
+  {
+   "nom": "Paris Turf",
+   "trouves_30j": 3.4
+  },
+  {
+   "nom": "Bilto",
+   "trouves_30j": 3.3
+  },
+  {
+   "nom": "Week-End",
+   "trouves_30j": 3.2
+  },
+  {
+   "nom": "Equidia",
+   "trouves_30j": 3.1
+  },
+  {
+   "nom": "Le Parisien",
+   "trouves_30j": 3.0
+  },
+  {
+   "nom": "Ouest-France",
+   "trouves_30j": 2.9
+  }
+ ],
+ "tickets": {
+  "presse": [
+   12,
+   3,
+   7,
+   15,
+   1
+  ],
+  "valeur": [
+   {
+    "num": 12,
+    "role": "base"
+   },
+   {
+    "num": 3,
+    "role": "base"
+   },
+   {
+    "num": 7,
+    "role": "base"
+   },
+   {
+    "num": 15,
+    "role": "valeur"
+   },
+   {
+    "num": 14,
+    "role": "outsider"
+   }
+  ],
+  "place": {
+   "num": 15,
+   "cote": 12.0
+  },
+  "mise_quinte": 2,
+  "mise_place": 4
+ },
+ "pourquoi": [
+  "Les trois bases sont retenues par 28 journaux sur 30 au moins, et le 12 est le premier choix de 11 d'entre eux.",
+  "Le 15 est moins joué par le public que ne le dit la presse. Le 14 est dans les trois premiers de Week-End, rarement cité ailleurs.",
+  "En placé, le 15 offre le meilleur rapport entre ses chances et sa cote."
+ ],
+ "budget": {
+  "semaine": 15
+ },
+ "hier": {
+  "texte": "Vendredi à Saint-Cloud, arrivée 4-12-7-1-9. Le ticket presse avait 3 chevaux sur 5 (Bonus 3 : 6,40 €), le ticket valeur 2. Aucun journal n'avait les 5."
+ },
+ "suivi": {
+  "methode": "Le ticket valeur, joué tous les jours sur le papier depuis le 1er octobre : 26 Quintés, 52 € misés, 44,60 € récupérés. Trop peu de courses pour conclure."
+ },
+ "resultats": [
+  {
+   "date": "2026-10-30",
+   "hippodrome": "Saint-Cloud",
+   "arrivee": [
+    4,
+    12,
+    7,
+    1,
+    9
+   ],
+   "rapports": {
+    "quinte_desordre": 412.8,
+    "bonus4": 38.2,
+    "bonus3": 6.4,
+    "simple_place": {
+     "4": 5.1,
+     "12": 1.6,
+     "7": 2.3
+    }
+   }
+  }
+ ]
+}
+</script>
+
+<header class="hero">
+  <svg class="shoe-big" viewBox="0 0 24 24"><path d="M12 3c5 0 8 3.6 8 8.2 0 3.6-1.6 6.4-3.4 8.8l-2.2-1.6c1.6-2.1 2.8-4.3 2.8-7.2C17.2 8 15.1 6 12 6S6.8 8 6.8 11.2c0 2.9 1.2 5.1 2.8 7.2l-2.2 1.6C5.6 17.6 4 14.8 4 11.2 4 6.6 7 3 12 3z" fill="currentColor"/></svg>
+  <div class="row">
+    <h1>Le Ticket<small>L'édition du matin</small></h1>
+    <div class="ed"><b id="ed-date"></b><span id="ed-prep"></span></div>
+  </div>
+</header>
+<div class="banner" id="stale"></div>
+<div class="sample" id="sample">Données d'exemple : chevaux, journaux et résultats sont inventés pour montrer la page.</div>
+
+<nav class="tabs" id="tabs">
+  <button data-t="jour" class="on">Aujourd'hui</button>
+  <button data-t="chevaux">Les chevaux</button>
+  <button data-t="mien">Mon ticket</button>
+  <button data-t="presse">La presse</button>
+  <button data-t="suivi">Le suivi</button>
+  <button data-t="lire">Comment lire</button>
+</nav>
+
+<!-- AUJOURD'HUI -->
+<div class="pane on print" id="p-jour">
+  <div class="verdict" id="status">
+    <span class="badge" id="st-title"></span>
+    <div><p id="st-line"></p><div class="shoes" id="shoes"></div></div>
+  </div>
+  <div class="racecard" id="race"></div>
+
+  <section>
+    <h2>Les deux tickets du jour <button class="help" data-tip="tip-duel">?</button></h2>
+    <div class="tip" id="tip-duel">Le Sage joue les 5 chevaux que la presse préfère : il rentre plus souvent, mais comme tout le monde le joue, il rapporte moins. L'Audacieux garde 3 bases, ajoute un cheval que le public néglige et un outsider : il rentre moins souvent, mais quand il rentre, le rapport est bien meilleur. Chaque ticket coûte 2 €. Tu peux jouer l'un, l'autre, ou les deux.</div>
+    <div class="duel" id="duel"></div>
+    <p class="legendline"><span><i class="b"></i>base</span><span><i class="v"></i>valeur, le public le néglige</span><span><i class="o"></i>outsider, le coup de poker</span></p>
+    <div class="placecard" id="place"></div>
+  </section>
+
+  <section>
+    <h2>Pourquoi ces chevaux</h2>
+    <ul class="why" id="why"></ul>
+    <p class="note" id="hier"></p>
+  </section>
+
+  <section>
+    <h2>Budget de la semaine <button class="help" data-tip="tip-budget">?</button></h2>
+    <div class="tip" id="tip-budget">15 € par semaine, du lundi au dimanche, pas plus. La barre se remplit avec les tickets que tu déclares joués sur cette page. Quand elle est pleine, la page ne propose plus de ticket jusqu'à lundi. Tout reste sur cet ordinateur, personne d'autre ne le voit.</div>
+    <div class="budgetcard">
+      <div class="budget" id="budget"></div>
+      <p class="note" style="margin:14px 0 0">Tu as joué quoi aujourd'hui ? Touche pour noter, retouche pour annuler.</p>
+      <div class="actions" id="played"></div>
+      <div class="actions"><button class="btn sec" onclick="window.print()">Imprimer</button></div>
+      <p class="note" id="played-note"></p>
+    </div>
+  </section>
+</div>
+
+<!-- LES CHEVAUX -->
+<div class="pane" id="p-chevaux">
+  <div class="toolbar">
+    <span>Trier par</span>
+    <button class="chip on" data-sort="presse">Avis de la presse</button>
+    <button class="chip" data-sort="cote">Cote</button>
+    <button class="chip" data-sort="forme">Forme récente</button>
+    <button class="chip" data-sort="num">Numéro</button>
+  </div>
+  <p class="note" style="margin:0 0 14px">Touche un cheval pour ouvrir sa fiche. Les pastilles, ce sont ses dernières courses, la plus récente à gauche : or pour une victoire, vert pour 2e ou 3e, orange pour 4e ou 5e, gris au-delà, rouge pour une disqualification.</p>
+  <div id="horses"></div>
+</div>
+
+<!-- MON TICKET -->
+<div class="pane print" id="p-mien">
+  <section>
+    <h2>Compose ton ticket <button class="help" data-tip="tip-mien">?</button></h2>
+    <div class="tip" id="tip-mien">Touche 5 chevaux, ou 6 ou 7 si tu veux élargir. La page te dit ce que ça coûte, combien de tes chevaux la presse retient, et si ton ticket est prudent ou audacieux. Il est gardé sur cet ordinateur jusqu'à demain.</div>
+    <div class="grid" id="grid"></div>
+    <div class="panel" id="mine-cost"></div>
+    <div class="panel" id="mine-profile"></div>
+    <div class="panel" id="mine-cmp"></div>
+    <div class="actions">
+      <button class="btn" id="mine-played">J'ai joué mon ticket</button>
+      <button class="btn sec" onclick="window.print()">Imprimer</button>
+      <button class="btn ghost" id="mine-clear">Effacer</button>
+    </div>
+    <p class="note" id="mine-note"></p>
+  </section>
+</div>
+
+<!-- LA PRESSE -->
+<div class="pane" id="p-presse">
+  <section>
+    <h2>Le jury des <span id="nbj"></span> journaux <button class="help" data-tip="tip-presse">?</button></h2>
+    <div class="tip" id="tip-presse">Chaque journal donne ses 8 chevaux dans l'ordre. Le premier choix rapporte 8 points, le deuxième 7, jusqu'à 1 point pour le huitième. On additionne : c'est la synthèse. "Cité par" dit combien de journaux retiennent le cheval, "en n°1" combien le mettent en tête.</div>
+    <div class="tablewrap"><table><thead><tr><th>N°</th><th>Cheval</th><th>Points</th><th>Cité par</th><th>En n°1</th></tr></thead><tbody id="synth"></tbody></table></div>
+  </section>
+  <section>
+    <h2>Qui croit à qui ?</h2>
+    <p class="note" style="margin:0 0 12px">Choisis un cheval : les journaux qui le mettent dans leurs 3 premiers s'allument.</p>
+    <select id="who"></select>
+    <div class="tablewrap" style="margin-top:14px"><table><thead><tr><th>Journal</th><th>Ses 8 chevaux</th></tr></thead><tbody id="jury"></tbody></table></div>
+  </section>
+  <section>
+    <h2>Les journaux les plus justes</h2>
+    <p class="note" style="margin:0 0 12px">Nombre moyen de chevaux de l'arrivée trouvés dans leurs 8, sur les 30 derniers Quintés.</p>
+    <div class="tablewrap"><table class="fiab"><tbody id="fiab"></tbody></table></div>
+  </section>
+</div>
+
+<!-- LE SUIVI -->
+<div class="pane" id="p-suivi">
+  <section>
+    <h2>Tes semaines</h2>
+    <p class="note" style="margin:0">Gains moins mises, semaine par semaine, sur les tickets que tu as déclarés joués sur cette page. Les résultats se remplissent le lendemain.</p>
+    <div class="panel" style="margin-top:12px"><div class="weeks" id="weeks"></div></div>
+  </section>
+  <section>
+    <h2>Le bilan</h2>
+    <ul class="why" id="bilan"></ul>
+  </section>
+  <section>
+    <h2>Tes tickets</h2>
+    <ul class="why" id="local-log"></ul>
+  </section>
+</div>
+
+<!-- COMMENT LIRE -->
+<div class="pane" id="p-lire">
+  <details open><summary>Quinté+ en désordre</summary><p>Tu choisis 5 chevaux. Si ce sont les 5 premiers de la course, dans n'importe quel ordre, tu gagnes le rapport désordre. Un ticket à 5 chevaux coûte 2 €. À 6 chevaux, ça fait 6 combinaisons, donc 12 €. À 7 chevaux, 42 €.</p></details>
+  <details><summary>Bonus 4 et Bonus 3</summary><p>Si 4 de tes 5 chevaux sont dans les 5 premiers, tu touches le Bonus 4. Si 3 le sont, le Bonus 3. C'est souvent petit, mais c'est ce qui fait que le ticket presse ne perd pas tout chaque fois.</p></details>
+  <details><summary>Simple Placé</summary><p>Un seul cheval. Il doit finir dans les 3 premiers. Ça rentre souvent, ça rapporte peu, c'est le pari le plus régulier. On y met 4 €.</p></details>
+  <details><summary>Cote du matin</summary><p>Ce que le PMU estime que le cheval rapporterait s'il gagnait, pour 1 € misé. Une cote à 4,5 veut dire que le public le voit gagner environ une fois sur six. Elle bouge jusqu'au départ.</p></details>
+  <details><summary>Part des mises</summary><p>La part de l'argent du public misée sur ce cheval. 24 % sur le 12 veut dire qu'un quart des mises Simple Gagnant est sur lui.</p></details>
+  <details><summary>Chance estimée et verdict</summary><p>La page pondère l'avis des 30 journaux pour donner une chance à chaque cheval, et la compare à la part des mises. "Le public le joue trop peu" veut dire que la presse croit plus en lui que les parieurs. C'est là qu'un pari peut rapporter plus qu'il ne le mérite. Attention, c'est une méthode en rodage, pas une certitude.</p></details>
+  <details><summary>Base, valeur, outsider</summary><p>Base : un cheval que presque tous les journaux retiennent. Valeur : un cheval bien placé par la presse mais que le public néglige. Outsider : un cheval peu cité, à grosse cote, mais qu'au moins un journal spécialisé met dans ses 3 premiers.</p></details>
+  <details><summary>Les fers à cheval, la confiance</summary><p>5 fers : la presse est unanime et nette. 4 : bon jour. 3 ou moins : la presse est partagée, la page ne conseille pas de jouer. Un fer en moins quand les cotes du matin manquent.</p></details>
+  <details><summary>Le budget</summary><p>15 € par semaine. C'est la règle qui compte plus que toutes les autres. Un ticket, c'est du plaisir. Dix tickets, c'est de l'argent perdu.</p></details>
+  <details><summary>Ce que la page ne sait pas</summary><p>Elle ne connaît pas les non-partants annoncés après la préparation de la page, ni l'état de la piste à l'heure de la course, ni les cotes de dernière minute. Elle ne garantit rien : le PMU garde environ 25 % des mises avant de redistribuer, donc sur la durée, tout le monde perd un peu. La page sert à mieux choisir, à comprendre, et à ne pas dépasser le budget.</p></details>
+</div>
+
+<p class="legal">Sources : presse relevée par tirage-gagnant et Turfoo, cotes Geny, statistiques Equidia. Jeu réservé aux majeurs. Aucun pronostic ne garantit un gain.</p>
+
+<script>
+(function () {
+  var D = JSON.parse(document.getElementById('data').textContent);
+  var $ = function (id) { return document.getElementById(id); };
+  var np = {}; (D.non_partants || []).forEach(function (n) { np[n] = true; });
+  var byNum = {}; D.partants.forEach(function (p) { byNum[p.num] = p; });
+  var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+  var eur = function (x) { var s = (Math.round(x * 100) / 100).toFixed(2).replace('.', ','); return (s.slice(-3) === ',00' ? s.slice(0, -3) : s) + ' €'; };
+  var cote = function (c) { return c == null ? '' : (c === Math.floor(c) ? String(c) : c.toFixed(1).replace('.', ',')); };
+  var store = { get: function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } }, set: function (k, v) { try { localStorage.setItem(k, v); } catch (e) {} }, del: function (k) { try { localStorage.removeItem(k); } catch (e) {} } };
+  var cap = function (s) { return s.charAt(0).toUpperCase() + s.slice(1); };
+
+  if (!D.exemple) $('sample').style.display = 'none';
+
+  // En-tête et alerte de date
+  $('ed-date').textContent = cap(D.date_texte);
+  $('ed-prep').textContent = 'préparée à ' + D.genere_le;
+  var pad = function (x) { return (x < 10 ? '0' : '') + x; };
+  var t = new Date(), iso = t.getFullYear() + '-' + pad(t.getMonth() + 1) + '-' + pad(t.getDate());
+  if (D.date !== iso && !D.exemple) { $('stale').textContent = 'Cette page est celle du ' + D.date_texte + '. Celle du jour n\'est pas encore arrivée : attends quelques minutes et rouvre-la.'; $('stale').classList.add('on'); }
+
+  // Onglets
+  var tabs = $('tabs').querySelectorAll('button');
+  Array.prototype.forEach.call(tabs, function (b) {
+    b.addEventListener('click', function () {
+      Array.prototype.forEach.call(tabs, function (x) { x.classList.remove('on'); });
+      Array.prototype.forEach.call(document.querySelectorAll('.pane'), function (p) { p.classList.remove('on'); });
+      b.classList.add('on'); $('p-' + b.dataset.t).classList.add('on'); window.scrollTo(0, 0);
+    });
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('.help'), function (h) {
+    h.addEventListener('click', function () { $(h.dataset.tip).classList.toggle('on'); });
+  });
+
+  // Carnet local : tout ce que mon père déclare reste dans son navigateur
+  function readLog() { try { return JSON.parse(store.get('ticket-log') || '[]'); } catch (e) { return []; } }
+  function writeLog(log) { store.set('ticket-log', JSON.stringify(log.slice(-200))); }
+  function comb(n, k) { if (k > n || k < 0) return 0; var r = 1; for (var i = 1; i <= k; i++) r = r * (n - k + i) / i; return Math.round(r); }
+  var T = D.tickets;
+  (function settle() {
+    var log = readLog(), res = {}; (D.resultats || []).forEach(function (r) { res[r.date] = r; });
+    var changed = false;
+    log.forEach(function (e) {
+      if (e.gain != null) return;
+      var r = res[e.date]; if (!r || !r.arrivee || r.arrivee.length < 5) return;
+      var arr5 = r.arrivee.slice(0, 5), rap = r.rapports || {};
+      if (e.type === 'place') {
+        var ok = arr5.slice(0, 3).indexOf(e.nums[0]) >= 0, rp = (rap.simple_place || {})[String(e.nums[0])];
+        if (ok && rp == null) return;
+        e.trouves = ok ? 1 : 0; e.gain = ok ? Math.round(rp * e.mise * 100) / 100 : 0;
+      } else {
+        var k = e.nums.filter(function (n) { return arr5.indexOf(n) >= 0; }).length, n = e.nums.length;
+        if (rap.quinte_desordre == null && rap.bonus4 == null && rap.bonus3 == null) return;
+        var g = comb(k, 5) * (rap.quinte_desordre || 0) + comb(k, 4) * (n - k) * (rap.bonus4 || 0) + comb(k, 3) * comb(n - k, 2) * (rap.bonus3 || 0);
+        e.trouves = k; e.gain = Math.round(g * (T.mise_quinte / 2) * 100) / 100;
+      }
+      changed = true;
+    });
+    if (changed) writeLog(log);
+  })();
+  function weekOf(d) { var x = new Date(d + 'T12:00:00'); var day = (x.getDay() + 6) % 7; x.setDate(x.getDate() - day); return x; }
+  function sameWeek(a, b) { return weekOf(a).getTime() === weekOf(b).getTime(); }
+  function budgetLocal() { var u = 0; readLog().forEach(function (e) { if (sameWeek(e.date, D.date)) u += e.mise; }); return u; }
+  var B = { semaine: D.budget.semaine, utilise: budgetLocal() }; B.restant = Math.max(0, B.semaine - B.utilise);
+  var budgetBloque = B.restant < T.mise_quinte;
+  if ((D.statut === 'jouer' || D.statut === 'pas_de_jeu') && budgetBloque) D.statut = 'budget';
+
+  // Verdict du jour
+  var st = $('status');
+  var titles = { jouer: 'Bon jour pour jouer', pas_de_jeu: 'Pas de jeu conseillé', budget: 'Budget de la semaine atteint', source_manquante: 'Pas de ticket ce matin' };
+  var lines = { jouer: 'La presse est nette, les cotes sont là, le budget le permet.', pas_de_jeu: D.raison_statut || 'La presse est trop partagée. Regarde quand même, et décide.', budget: 'On reprend lundi. Regarde la course pour le plaisir.', source_manquante: 'Les journaux n\'ont pas pu être relevés. Pas de ticket plutôt qu\'un ticket inventé.' };
+  if (D.statut === 'pas_de_jeu') st.classList.add('no'); if (D.statut === 'budget' || D.statut === 'source_manquante') st.classList.add('blocked');
+  $('st-title').textContent = titles[D.statut]; $('st-line').textContent = lines[D.statut];
+  var shoe = '<svg viewBox="0 0 24 24" class="SHOE"><path d="M12 3c5 0 8 3.6 8 8.2 0 3.6-1.6 6.4-3.4 8.8l-2.2-1.6c1.6-2.1 2.8-4.3 2.8-7.2C17.2 8 15.1 6 12 6S6.8 8 6.8 11.2c0 2.9 1.2 5.1 2.8 7.2l-2.2 1.6C5.6 17.6 4 14.8 4 11.2 4 6.6 7 3 12 3z" fill="currentColor"/></svg>';
+  var sh = ''; for (var i = 1; i <= 5; i++) sh += shoe.replace('SHOE', i <= D.confiance ? 'on' : 'off');
+  $('shoes').innerHTML = sh + '<span>confiance ' + D.confiance + ' sur 5</span>';
+
+  var c = D.course;
+  $('race').innerHTML = '<div class="time"><small>Départ</small>' + esc(c.heure) + '</div><div class="txt"><b>Quinté+ à ' + esc(c.hippodrome) + '</b>' + esc(c.prix) + ' (' + esc(c.rc) + '). ' + esc(c.detail) + '.'
+    + (D.non_partants && D.non_partants.length ? ' Non-partants connus à la préparation de la page : ' + D.non_partants.join(', ') + '.' : '')
+    + (c.grande_course ? '<br><span class="big">Grande course du week-end</span>' : '') + '</div>';
+
+  // Bulletins
+  function numBox(n, role, label) { return '<div class="num ' + role + '">' + n + (label ? '<small>' + label + '</small>' : '') + '</div>'; }
+  function slip(cls, name, tag, aim, nums, names, stake, formule) {
+    return '<div class="slip ' + cls + '"><div class="who"><h3>' + name + '</h3><span class="tag">' + tag + '</span></div><p class="aim">' + aim + '</p><div class="nums">' + nums + '</div><p class="names">' + names + '</p><div class="foot"><span class="stake">' + stake + '</span><span class="formule">' + formule + '</span></div></div>';
+  }
+  var okTickets = (D.statut === 'jouer' || D.statut === 'pas_de_jeu');
+  if (okTickets) {
+    $('duel').innerHTML =
+      slip('s', 'Le Sage', 'ticket presse', 'Les 5 préférés des journaux. Rentre plus souvent, rapporte moins.',
+        T.presse.map(function (n) { return numBox(n, 'presse'); }).join(''),
+        T.presse.map(function (n) { return n + ' ' + esc(byNum[n].nom); }).join(', '), eur(T.mise_quinte), '5 chevaux, désordre')
+      + slip('v', 'L\'Audacieux', 'ticket valeur', '3 bases, 1 cheval que le public néglige, 1 outsider. Rentre moins souvent, rapporte plus.',
+        T.valeur.map(function (x) { return numBox(x.num, x.role, x.role); }).join(''),
+        T.valeur.map(function (x) { return x.num + ' ' + esc(byNum[x.num].nom); }).join(', '), eur(T.mise_quinte), '5 chevaux, désordre');
+    if (T.place) $('place').innerHTML = numBox(T.place.num, 'base') + '<div class="txt"><b>Simple Placé sur le ' + T.place.num + ' ' + esc(byNum[T.place.num].nom) + '</b><br>Cote du matin ' + cote(T.place.cote) + '. Il doit finir dans les 3 premiers.</div><span class="stake">' + eur(T.mise_place) + '</span>';
+    else $('place').innerHTML = '<div class="txt">Pas de Simple Placé aujourd\'hui : les cotes du matin manquent ou aucun cheval ne vaut le coup.</div>';
+    $('why').innerHTML = D.pourquoi.map(function (l) { return '<li>' + esc(l) + '</li>'; }).join('');
+  } else {
+    $('duel').innerHTML = ''; $('place').style.display = 'none'; $('why').innerHTML = '<li>Pas de ticket proposé aujourd\'hui.</li>';
+  }
+  $('hier').textContent = D.hier ? 'Hier : ' + D.hier.texte : '';
+
+  // Budget et déclaration des tickets joués, tout en local
+  function renderBudget() {
+    B.utilise = budgetLocal(); B.restant = Math.max(0, B.semaine - B.utilise);
+    var pct = Math.min(100, Math.round(100 * B.utilise / B.semaine));
+    $('budget').innerHTML = '<span class="amount">' + eur(B.restant) + '<small>restants sur ' + eur(B.semaine) + '</small></span><div class="bar' + (B.utilise >= B.semaine ? ' over' : '') + '"><i style="width:' + pct + '%"></i></div>';
+  }
+  function toggleEntry(type, nums, mise, label) {
+    var log = readLog(), i = -1;
+    log.forEach(function (e, k) { if (e.date === D.date && e.type === type && e.nums.join('-') === nums.join('-')) i = k; });
+    if (i >= 0) log.splice(i, 1); else log.push({ date: D.date, type: type, nums: nums, mise: mise, label: label });
+    writeLog(log);
+    var bloque = (B.semaine - budgetLocal()) < T.mise_quinte;
+    if (bloque !== budgetBloque) { window.location.reload(); return; }
+    renderBudget(); renderPlayed(); renderSuivi();
+  }
+  function hasEntry(type, nums) { return readLog().some(function (e) { return e.date === D.date && e.type === type && e.nums.join('-') === nums.join('-'); }); }
+  function renderPlayed() {
+    if (!T.presse || !T.presse.length || D.statut === 'source_manquante') { $('played').innerHTML = ''; return; }
+    var vn = T.valeur.map(function (x) { return x.num; }), h = '';
+    h += '<button class="btn tog' + (hasEntry('quinte', T.presse) ? ' on' : '') + '" data-k="sage">Le Sage, ' + eur(T.mise_quinte) + '</button>';
+    h += '<button class="btn tog' + (hasEntry('quinte', vn) ? ' on' : '') + '" data-k="audacieux">L\'Audacieux, ' + eur(T.mise_quinte) + '</button>';
+    if (T.place) h += '<button class="btn tog' + (hasEntry('place', [T.place.num]) ? ' on' : '') + '" data-k="place">Placé ' + T.place.num + ', ' + eur(T.mise_place) + '</button>';
+    $('played').innerHTML = h;
+    Array.prototype.forEach.call($('played').querySelectorAll('button'), function (b) {
+      b.addEventListener('click', function () {
+        var k = b.dataset.k;
+        if (k === 'sage') toggleEntry('quinte', T.presse, T.mise_quinte, 'Le Sage');
+        if (k === 'audacieux') toggleEntry('quinte', vn, T.mise_quinte, 'L\'Audacieux');
+        if (k === 'place') toggleEntry('place', [T.place.num], T.mise_place, 'Simple Placé');
+      });
+    });
+    var n = readLog().filter(function (e) { return e.date === D.date; }).length;
+    $('played-note').innerHTML = n ? '<span class="ok">' + n + ' ticket' + (n > 1 ? 's' : '') + ' noté' + (n > 1 ? 's' : '') + ' pour aujourd\'hui.</span>' : '';
+  }
+  renderBudget(); renderPlayed();
+
+  // Musique
+  function parseForm(m) {
+    var out = [], toks = (m || '').split(/\s+/);
+    toks.forEach(function (tk) {
+      if (!tk) return;
+      var y = tk.match(/^\((\d+)\)$/); if (y) { out.push({ cls: 'yr', txt: "'" + y[1] }); return; }
+      var r = tk.match(/^([0-9]+|D|T|A|R|Ret)([a-z]*)$/i); if (!r) return;
+      var v = r[1].toUpperCase(), cls = 'g4';
+      if (v === '1') cls = 'g1'; else if (v === '2' || v === '3') cls = 'g2'; else if (v === '4' || v === '5') cls = 'g3'; else if (/^[DTAR]/.test(v)) cls = 'g5';
+      out.push({ cls: cls, txt: v === '0' ? '0' : v.replace('RET', 'R') });
+    });
+    return out;
+  }
+  function formScore(m) { var s = 0, n = 0; parseForm(m).forEach(function (f) { if (f.cls === 'yr' || n >= 5) return; n++; s += { g1: 5, g2: 4, g3: 2, g4: 0, g5: -1 }[f.cls]; }); return n ? s / n : 0; }
+  function formHtml(m) { return '<div class="form">' + parseForm(m).map(function (f) { return '<span class="f ' + f.cls + '">' + f.txt + '</span>'; }).join('') + '</div>'; }
+
+  // Chevaux : chance estimée et verdict (mêmes règles que le script)
+  var P = D.params || { expo: 1.5, trj: 0.745, seuil_valeur: 1.2, seuil_surcote: 0.85 };
+  var cited = D.partants.filter(function (p) { return !np[p.num]; });
+  var precalc = cited.length && cited[0].pest != null;
+  if (!precalc) {
+    var tot = cited.reduce(function (a, p) { return a + Math.pow(p.points, P.expo); }, 0) || 1;
+    cited.forEach(function (p) { p.pest = Math.pow(p.points, P.expo) / tot; p.pm = p.pct != null ? p.pct / 100 : (p.cote ? P.trj / p.cote : null); });
+    var mm = 0, mp = 0; cited.forEach(function (p) { if (p.pm) { mm += p.pm; mp += p.pest; } }); var k = mp ? mm / mp : 1;
+    cited.forEach(function (p) { p.pest *= k; p.ratio = (p.pm && p.pest > 0) ? p.pest / p.pm : null; p.classe = p.ratio == null ? 'inconnue' : p.ratio >= P.seuil_valeur ? 'valeur' : p.ratio <= P.seuil_surcote ? 'surcote' : 'juste'; });
+  } else {
+    cited.forEach(function (p) { if (p.pm == null) p.pm = p.pct != null ? p.pct / 100 : (p.cote ? P.trj / p.cote : null); if (!p.classe) p.classe = 'inconnue'; });
+  }
+  var ranked = cited.slice().sort(function (a, b) { return b.points - a.points || b.citations - a.citations || a.num - b.num; });
+  ranked.forEach(function (p, i) { p.rang = i + 1; });
+  var top5 = ranked.slice(0, 5).map(function (p) { return p.num; });
+  var verdTxt = { valeur: 'le public le joue trop peu', surcote: 'le public le joue trop', juste: 'le public le joue juste', inconnue: '' };
+  var roleOf = {}; T.valeur.forEach(function (x) { roleOf[x.num] = x.role; });
+
+  var sortMode = 'presse';
+  function renderHorses() {
+    var list = D.partants.slice();
+    if (sortMode === 'presse') list.sort(function (a, b) { return (np[a.num] - np[b.num]) || b.points - a.points || a.num - b.num; });
+    if (sortMode === 'cote') list.sort(function (a, b) { return (a.cote == null) - (b.cote == null) || a.cote - b.cote; });
+    if (sortMode === 'forme') list.sort(function (a, b) { return formScore(b.musique) - formScore(a.musique); });
+    if (sortMode === 'num') list.sort(function (a, b) { return a.num - b.num; });
+    $('horses').innerHTML = list.map(function (p) {
+      var j3 = D.journaux.filter(function (j) { return j.chevaux.slice(0, 3).indexOf(p.num) >= 0; }).map(function (j) { return j.nom; });
+      var j8 = D.journaux.filter(function (j) { return j.chevaux.indexOf(p.num) >= 0; }).map(function (j) { return j.nom + ' (' + (j.chevaux.indexOf(p.num) + 1) + 'e)'; });
+      var role = roleOf[p.num] || '';
+      var tags = (role ? '<span class="verd">' + role + '</span> ' : '') + (p.classe !== 'inconnue' ? '<span class="verd ' + p.classe + '">' + verdTxt[p.classe] + '</span>' : '');
+      return '<div class="horse' + (np[p.num] ? ' np' : '') + (role ? ' r-' + role : '') + '" data-n="' + p.num + '"><div class="num ' + (top5.indexOf(p.num) >= 0 ? 'presse' : '') + '">' + p.num + '</div><div class="body">'
+        + '<div class="top"><span class="name">' + esc(p.nom) + (np[p.num] ? ' <span class="verd">non partant</span>' : '') + '</span><span class="cote"><small>cote</small>' + (cote(p.cote) || '?') + '</span></div>'
+        + '<div class="sub">' + esc(p.age) + ' · ' + esc(p.driver) + ' · entraîneur ' + esc(p.entraineur) + '</div>'
+        + formHtml(p.musique)
+        + '<div class="meta"><span>cité par <b>' + p.citations + '</b> journaux sur ' + D.nb_journaux + '</span>' + (p.premiers ? '<span>en n°1 <b>' + p.premiers + '</b> fois</span>' : '') + '<span>' + tags + '</span></div>'
+        + '<div class="press-bar"><i style="width:' + Math.round(100 * p.citations / D.nb_journaux) + '%"></i></div>'
+        + '<div class="detail">'
+        + (p.stats ? '<p><b>Les stats :</b> ' + esc(p.stats) + '</p>' : '')
+        + (p.ratio != null ? '<p><b>La presse lui donne</b> ' + Math.round(p.pest * 100) + ' % de chances, <b>le public</b> ' + Math.round(p.pm * 100) + ' %. ' + cap(verdTxt[p.classe]) + '.</p>' : '')
+        + '<p><b>Dans les 3 premiers de :</b> ' + (j3.length ? esc(j3.join(', ')) : 'aucun journal affiché') + '</p>'
+        + '<p><b>Retenu par :</b> ' + (j8.length ? esc(j8.join(', ')) : 'aucun journal affiché') + '</p>'
+        + '</div></div></div>';
+    }).join('');
+    Array.prototype.forEach.call($('horses').querySelectorAll('.horse'), function (h) { h.addEventListener('click', function () { h.classList.toggle('open'); }); });
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('[data-sort]'), function (b) {
+    b.addEventListener('click', function () { Array.prototype.forEach.call(document.querySelectorAll('[data-sort]'), function (x) { x.classList.remove('on'); }); b.classList.add('on'); sortMode = b.dataset.sort; renderHorses(); });
+  });
+  renderHorses();
+
+  // Mon ticket
+  var keyM = 'mon-ticket-' + D.date, mine = [];
+  try { mine = JSON.parse(store.get(keyM) || '[]'); } catch (e) {}
+  function gauge(lbl, pct, color, val) { return '<div class="gauge"><span class="lbl">' + lbl + '</span><div class="bar"><i style="width:' + pct + '%;background:' + color + '"></i></div><span class="val">' + val + '</span></div>'; }
+  function renderMine() {
+    $('grid').innerHTML = D.partants.map(function (p) { return '<button data-n="' + p.num + '" class="' + (mine.indexOf(p.num) >= 0 ? 'on' : '') + (np[p.num] ? ' np' : '') + '"' + (np[p.num] ? ' disabled' : '') + '>' + p.num + '</button>'; }).join('');
+    Array.prototype.forEach.call($('grid').querySelectorAll('button'), function (b) {
+      b.addEventListener('click', function () { var n = +b.dataset.n, i = mine.indexOf(n); if (i >= 0) mine.splice(i, 1); else if (mine.length < 8) mine.push(n); store.set(keyM, JSON.stringify(mine)); renderMine(); });
+    });
+    var n = mine.length;
+    if (n < 5) { $('mine-cost').innerHTML = '<h3>' + (n ? n + ' cheva' + (n > 1 ? 'ux' : 'l') + ' choisi' + (n > 1 ? 's' : '') + ', encore ' + (5 - n) : 'Touche 5 chevaux') + '</h3><p class="note">Il en faut 5 pour un ticket. Tu peux aller jusqu\'à 8.</p>'; $('mine-profile').innerHTML = ''; $('mine-cmp').innerHTML = ''; $('mine-played').disabled = true; return; }
+    $('mine-played').disabled = false;
+    var combs = comb(n, 5), cost = combs * T.mise_quinte;
+    $('mine-cost').innerHTML = '<h3>Ton ticket : ' + mine.slice().sort(function (a, b) { return a - b; }).join(' - ') + '</h3><p>' + n + ' chevaux en désordre, ' + combs + ' combinaison' + (combs > 1 ? 's' : '') + ', <b>' + eur(cost) + '</b>.' + (cost > B.restant ? ' <span style="color:var(--red)">C\'est plus que ce qu\'il reste cette semaine (' + eur(B.restant) + ').</span>' : '') + '</p>'
+      + '<p class="note">' + mine.map(function (x) { return x + ' ' + esc(byNum[x].nom); }).join(', ') + '</p>';
+    var inTop5 = mine.filter(function (x) { return top5.indexOf(x) >= 0; }).length;
+    var inTop8 = mine.filter(function (x) { return byNum[x].rang && byNum[x].rang <= 8; }).length;
+    var outs = mine.filter(function (x) { return byNum[x].citations <= D.nb_journaux / 3; }).length;
+    var audace = Math.round(100 * outs / n), pres = Math.round(100 * inTop5 / Math.min(n, 5));
+    $('mine-profile').innerHTML = '<h3>Le profil de ton ticket</h3>'
+      + gauge('D\'accord avec la presse', pres, 'var(--green)', inTop5 + ' de tes chevaux dans son top 5, ' + inTop8 + ' dans son top 8')
+      + gauge('Audace', audace, 'var(--red)', outs + ' outsider' + (outs > 1 ? 's' : '') + ' (cité' + (outs > 1 ? 's' : '') + ' par moins d\'un journal sur trois)')
+      + '<p class="note">' + (audace === 0 ? 'Ticket prudent : il rentre plus souvent, il rapporte moins.' : audace <= 40 ? 'Ticket équilibré : des bases et un coup de poker.' : 'Ticket très audacieux : gros rapport possible, mais il rentrera rarement.') + '</p>';
+    var cv = T.valeur.map(function (x) { return x.num; });
+    $('mine-cmp').innerHTML = '<h3>Face aux deux tickets du jour</h3><div class="cmp">'
+      + '<div>En commun avec Le Sage<b>' + mine.filter(function (x) { return T.presse.indexOf(x) >= 0; }).length + ' sur 5</b></div>'
+      + '<div>En commun avec L\'Audacieux<b>' + mine.filter(function (x) { return cv.indexOf(x) >= 0; }).length + ' sur 5</b></div>'
+      + '<div>Tes chevaux à toi<b>' + (mine.filter(function (x) { return T.presse.indexOf(x) < 0 && cv.indexOf(x) < 0; }).join(', ') || 'aucun') + '</b></div></div>';
+  }
+  renderMine();
+  $('mine-clear').addEventListener('click', function () { mine = []; store.del(keyM); renderMine(); });
+  $('mine-played').addEventListener('click', function () {
+    var nums = mine.slice().sort(function (a, b) { return a - b; }), cost = comb(mine.length, 5) * T.mise_quinte;
+    if (hasEntry('quinte', nums)) { $('mine-note').innerHTML = '<span class="ok">Ce ticket est déjà noté pour aujourd\'hui.</span>'; return; }
+    toggleEntry('quinte', nums, cost, 'Mon ticket');
+    $('mine-note').innerHTML = '<span class="ok">Noté : ton ticket ' + nums.join('-') + ' (' + eur(cost) + ') est dans ton carnet.</span>';
+  });
+
+  // Presse
+  $('nbj').textContent = D.nb_journaux;
+  $('synth').innerHTML = ranked.slice(0, 8).map(function (p) { return '<tr><td class="n">' + p.num + '</td><td>' + esc(p.nom) + '</td><td>' + p.points + '</td><td>' + p.citations + ' / ' + D.nb_journaux + '</td><td>' + p.premiers + '</td></tr>'; }).join('');
+  $('who').innerHTML = '<option value="">Choisis un cheval</option>' + ranked.map(function (p) { return '<option value="' + p.num + '">' + p.num + ' ' + esc(p.nom) + '</option>'; }).join('');
+  function renderJury() {
+    var sel = +$('who').value;
+    $('jury').innerHTML = D.journaux.map(function (j) {
+      var hit = sel && j.chevaux.slice(0, 3).indexOf(sel) >= 0;
+      return '<tr' + (hit ? ' class="hit"' : '') + '><td>' + esc(j.nom) + '</td><td><div class="j">' + j.chevaux.map(function (n) { return '<i class="' + (n === sel ? 'hit' : '') + '">' + n + '</i>'; }).join('') + '</div></td></tr>';
+    }).join('');
+  }
+  $('who').addEventListener('change', renderJury); renderJury();
+  $('fiab').innerHTML = (D.fiabilite_journaux || []).map(function (f) { return '<tr><td>' + esc(f.nom) + '</td><td><b>' + String(f.trouves_30j).replace('.', ',') + '</b> sur 5</td></tr>'; }).join('') || '<tr><td>Pas encore assez de jours pour le dire.</td></tr>';
+
+  // Suivi : à partir du carnet local, résultats réglés par la page
+  function frDate(d) { var x = new Date(d + 'T12:00:00'); return x.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' }); }
+  function isoWeek(d) { var x = new Date(d + 'T12:00:00'); x.setDate(x.getDate() + 3 - ((x.getDay() + 6) % 7)); var w1 = new Date(x.getFullYear(), 0, 4); return 1 + Math.round(((x - w1) / 86400000 - 3 + ((w1.getDay() + 6) % 7)) / 7); }
+  function renderSuivi() {
+    var log = readLog(), weeks = [], mon = weekOf(D.date);
+    for (var i = 5; i >= 0; i--) {
+      var deb = new Date(mon); deb.setDate(deb.getDate() - 7 * i); var fin = new Date(deb); fin.setDate(fin.getDate() + 6);
+      var solde = 0, n = 0;
+      log.forEach(function (e) { var x = new Date(e.date + 'T12:00:00'); if (x >= deb && x <= fin && e.gain != null) { solde += e.gain - e.mise; n++; } });
+      weeks.push({ label: 'S' + isoWeek(deb.toISOString().slice(0, 10)), solde: Math.round(solde * 100) / 100, n: n });
+    }
+    var mx = Math.max.apply(null, weeks.map(function (w) { return Math.abs(w.solde); })) || 1;
+    $('weeks').innerHTML = weeks.map(function (w) { return '<div class="wk"><span class="v">' + (w.n ? (w.solde > 0 ? '+' : '') + w.solde.toFixed(2).replace('.', ',') + ' €' : '') + '</span><i class="' + (w.solde < 0 ? 'neg' : '') + '" style="height:' + (w.n ? Math.max(4, Math.round(100 * Math.abs(w.solde) / mx)) : 0) + '%"></i><small>' + esc(w.label) + '</small></div>'; }).join('');
+    var regles = log.filter(function (e) { return e.gain != null; }), lines = [];
+    var mois = D.date.slice(0, 7), lm = regles.filter(function (e) { return e.date.slice(0, 7) === mois; });
+    if (lm.length) { var mi = 0, ga = 0; lm.forEach(function (e) { mi += e.mise; ga += e.gain; }); lines.push('Ce mois-ci : ' + lm.length + ' ticket' + (lm.length > 1 ? 's' : '') + ', ' + eur(mi) + ' misés, ' + eur(ga) + ' récupérés.'); }
+    var gagnants = regles.filter(function (e) { return e.gain > 0; });
+    if (gagnants.length) { var g = gagnants[gagnants.length - 1]; lines.push('Dernier ticket gagnant : ' + frDate(g.date) + ', ' + g.label + ', ' + eur(g.gain) + '.'); }
+    else if (regles.length) lines.push('Pas encore de ticket gagnant.');
+    if (D.suivi && D.suivi.methode) lines.push(D.suivi.methode);
+    $('bilan').innerHTML = lines.length ? lines.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') : '<li>Rien pour le moment. Déclare tes tickets sur la page du jour, le bilan se construira tout seul.</li>';
+    $('local-log').className = 'why ticketlist';
+    $('local-log').innerHTML = log.length ? log.slice().reverse().slice(0, 30).map(function (e) {
+      var r = e.gain == null ? '<span class="p">résultat à venir</span>' : (e.gain > 0 ? '<span class="g">' + (e.trouves != null && e.type !== 'place' ? e.trouves + ' sur 5, ' : '') + eur(e.gain) + ' récupérés</span>' : '<span class="p">' + (e.trouves != null && e.type !== 'place' ? e.trouves + ' sur 5, ' : '') + 'perdu</span>');
+      return '<li>' + esc(frDate(e.date)) + ' : ' + esc(e.label) + ' ' + esc(e.nums.join('-')) + ', ' + eur(e.mise) + '. ' + r + '</li>';
+    }).join('') : '<li>Rien pour le moment. Les tickets que tu déclares joués apparaîtront ici.</li>';
+  }
+  renderSuivi();
+})();
+</script>
+
+</body>
+</html>
