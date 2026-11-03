@@ -1,0 +1,73 @@
+# Le Ticket : réglages métier.
+# Tout ce qui est chiffré se change ici, jamais dans le script.
+
+budget:
+  semaine_euros: 15          # plafond du lundi au dimanche, fixé avec ton père
+  mise_quinte: 2             # un ticket Quinté+ 5 chevaux désordre = 1 combinaison à la mise de base (2 €, à vérifier sur le bulletin)
+  mise_place: 4              # mise du Simple Placé
+
+trj:
+  simple: 0.745              # taux de retour aux joueurs, paris simples (arrêté du 5 juin 2010)
+  quinte: 0.72               # Quinté+
+
+rapports:
+  base_quinte: 2             # les rapports Quinté+ sont publiés pour une mise de 2 €
+  base_place: 1              # les rapports Simple Placé sont publiés pour 1 €
+
+presse:
+  bareme: [8, 7, 6, 5, 4, 3, 2, 1]          # points du 1er au 8e choix d'un journal
+  journaux_affiches:                        # affichés en détail sur la page, si présents dans la source
+    - Paris Turf
+    - Week-End
+    - Bilto
+    - Tiercé Magazine
+    - Le Parisien
+    - Ouest-France
+    - Equidia
+    - Europe 1
+  titres_specialises:                       # un outsider doit être défendu par au moins un de ces titres
+    - Paris Turf
+    - Week-End
+    - Bilto
+    - Tiercé Magazine
+
+valeur:
+  exposant_presse: 1.5       # transforme les points presse en chances : 1 = proportionnel, plus haut = concentre sur les favoris. C'est LE réglage à recaler avec le journal
+  seuil_valeur: 1.20         # ratio chance estimée / chance donnée par le public au-dessus duquel on parle de valeur
+  seuil_surcote: 0.85        # en dessous, le public le joue trop
+
+ticket_valeur:
+  part_citations_base: 0.90        # une base doit être citée par au moins 90 % des journaux
+  part_citations_outsider_max: 0.34 # un outsider est cité par au plus un tiers des journaux
+  rang_valeur_min: 4               # le cheval "valeur" est pris entre le 4e et le 8e de la synthèse
+  rang_valeur_max: 8
+  cote_outsider_min: 8
+  cote_outsider_max: 40
+
+place:
+  cote_min: 2.0              # en dessous, le Simple Placé ne vaut pas la peine
+  rangs_consideres: 4        # on choisit parmi les 4 premiers de la synthèse
+
+confiance:
+  seuil_jouer: 4
+  niveaux:                   # part des journaux citant la base, et écart relatif de points entre le 1er et le 2e
+    - { niveau: 5, citations: 0.95, ecart: 0.15 }
+    - { niveau: 4, citations: 0.85, ecart: 0.08 }
+    - { niveau: 3, citations: 0.70, ecart: 0.00 }
+    - { niveau: 2, citations: 0.50, ecart: 0.00 }
+  malus_sans_cotes: 1        # un point de moins si les cotes du matin manquent
+
+publication:                 # GitHub Pages : la page est publiée à https://julientravers-boop.github.io/turf/
+  github_owner: "julientravers-boop"
+  github_repo: "turf"
+  github_branch: "main"
+  fichier_distant: "index.html"
+  token_fichier: token.txt   # une seule ligne : la clé d'accès. Jamais dans un email, jamais partagée
+
+fichiers:
+  collecte: collecte.json
+  journal: journal-quinte.xlsx
+  gabarit: ticket-template.html   # la page modèle ; le script y injecte les données du jour
+  page: ticket.html
+  message: message.txt
+  onedrive: ""               # vide : le dossier de travail est lui-même le dossier OneDrive « Courses papa », rien à copier
