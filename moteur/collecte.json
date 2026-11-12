@@ -1,253 +1,307 @@
 {
-  "date": "2026-11-03",
-  "genere_le": "9h45",
+  "date": "2026-11-11",
+  "genere_le": "11h54",
   "course": {
-    "hippodrome": "Vincennes",
-    "prix": "Prix de Vienne",
-    "rc": "R1 C1",
-    "heure": "13h55",
-    "detail": "Trot attelé, 2 850 m, 17 partants.",
-    "partants": 17,
+    "hippodrome": "Toulouse",
+    "prix": "Prix de la Ville de Toulouse",
+    "rc": "R1 C3",
+    "heure": "15h15",
+    "detail": "Plat, handicap divisé, 2 400 m sur herbe, 16 partants.",
+    "partants": 16,
     "grande_course": false
   },
   "non_partants": [],
   "partants": [
     {
-      "num": 2,
-      "nom": "Kynte Flush",
-      "cote_probable": null,
+      "num": 1,
+      "nom": "Agador",
+      "cote_probable": 8.9,
       "pct_enjeux": null,
       "stats": "",
       "age": null,
-      "driver": null,
-      "entraineur": null,
-      "musique": null
+      "driver": "M. Forest",
+      "entraineur": "J. Resimont",
+      "musique": "5p 6p 6p 4p 1p 0p 8p (25) 1p 3p"
+    },
+    {
+      "num": 2,
+      "nom": "Poca Gen",
+      "cote_probable": 26.0,
+      "pct_enjeux": null,
+      "stats": "",
+      "age": null,
+      "driver": "T. Piccone",
+      "entraineur": "C. Herisson de Beauvoir",
+      "musique": "4p 0p 4p 1p 2p 0p 9p 3p 5p 0p"
+    },
+    {
+      "num": 3,
+      "nom": "Spanish Breeze Cen",
+      "cote_probable": 23.0,
+      "pct_enjeux": null,
+      "stats": "",
+      "age": null,
+      "driver": "A. Lemaitre",
+      "entraineur": "P. Olave Valdivielso",
+      "musique": "6p 3p 7p 3p (25) 6p 1p 4p 1p 9p"
     },
     {
       "num": 4,
-      "nom": "Kansas Quesnot",
-      "cote_probable": null,
+      "nom": "Sharp Rise",
+      "cote_probable": 59.0,
       "pct_enjeux": null,
       "stats": "",
       "age": null,
-      "driver": null,
-      "entraineur": null,
-      "musique": null
+      "driver": "A. Gavilan",
+      "entraineur": "S. Audoy",
+      "musique": "0p 4p 4p 1p 1p 1p 4p (25) 2p 1p"
     },
     {
       "num": 5,
-      "nom": "Kannabis Jeloca",
-      "cote_probable": null,
+      "nom": "Xilofono",
+      "cote_probable": 23.0,
+      "pct_enjeux": null,
+      "stats": "À Toulouse : 8 courses, 3 victoires et 4 places, gagnant ici le 26 octobre.",
+      "age": null,
+      "driver": "V. Janacek",
+      "entraineur": "G. Arizkorreta Elosegui",
+      "musique": "1p 2p 3p 9p 7p 2p 2p 0p 0p"
+    },
+    {
+      "num": 6,
+      "nom": "Nolito",
+      "cote_probable": 27.0,
       "pct_enjeux": null,
       "stats": "",
       "age": null,
-      "driver": null,
-      "entraineur": null,
-      "musique": null
+      "driver": "G. Guedj-Gay",
+      "entraineur": "S. Gavilan",
+      "musique": "0p 7p 2p 7p 2p 1p 5p 2p 0p 5p"
     },
     {
       "num": 7,
-      "nom": "Kosy d'Eronville",
-      "cote_probable": null,
+      "nom": "Sigtuna",
+      "cote_probable": 39.0,
       "pct_enjeux": null,
-      "stats": "",
+      "stats": "Chez Damien de Watrigant : 5 courses, 1 victoire et 3 places, mais pas de podium depuis ses débuts chez lui en mars.",
       "age": null,
-      "driver": null,
-      "entraineur": null,
-      "musique": null
+      "driver": "H. Mouesan",
+      "entraineur": "D. de Watrigant",
+      "musique": "3p 1p 2p 3p 6p 3p 0p (25) 8p 1p"
     },
     {
       "num": 8,
-      "nom": "Karma",
-      "cote_probable": null,
+      "nom": "Lohengreen",
+      "cote_probable": 4.5,
       "pct_enjeux": null,
       "stats": "",
       "age": null,
-      "driver": null,
-      "entraineur": null,
-      "musique": null
+      "driver": "M. Grandin",
+      "entraineur": "C. Escuder",
+      "musique": "4p 3p 0p 0p 3p 6p 2p 2p 1p"
+    },
+    {
+      "num": 9,
+      "nom": "Zilya",
+      "cote_probable": 19.0,
+      "pct_enjeux": null,
+      "stats": "",
+      "age": null,
+      "driver": "D. Provost",
+      "entraineur": "M. Cesandri",
+      "musique": "5p 1p 0p 0p 6p 6p 0p 1p 6p 4p"
     },
     {
       "num": 10,
-      "nom": "Kazy Mérité",
-      "cote_probable": null,
+      "nom": "Britania",
+      "cote_probable": 5.6,
       "pct_enjeux": null,
-      "stats": "",
+      "stats": "Dans les Quintés+ : 7 courses, 4 podiums, 72 % dans les 5, pour l'entraînement de François Rohaut.",
       "age": null,
-      "driver": null,
-      "entraineur": null,
-      "musique": null
+      "driver": "I. Mendizabal",
+      "entraineur": "F. Rohaut",
+      "musique": "3p 4p 4p 8p 0p 5p 5p (25) 3p 2p"
     },
     {
       "num": 11,
-      "nom": "Kejaime de Houelle",
-      "cote_probable": null,
+      "nom": "King Trezy",
+      "cote_probable": 6.9,
       "pct_enjeux": null,
-      "stats": "",
+      "stats": "À sa valeur de 35,5 : 3 courses, 1 victoire, 1 place, toujours dans les 5.",
       "age": null,
-      "driver": null,
-      "entraineur": null,
-      "musique": null
+      "driver": "R. Thomas",
+      "entraineur": "C. et Y. Lerner",
+      "musique": "4p 8p 8p 8p 3p (25) Ap 7p 2p 3p"
     },
     {
       "num": 12,
-      "nom": "Kaiser des Granges",
-      "cote_probable": null,
+      "nom": "Gold Player",
+      "cote_probable": 19.0,
       "pct_enjeux": null,
       "stats": "",
       "age": null,
-      "driver": null,
-      "entraineur": null,
-      "musique": null
+      "driver": "A. Crastus",
+      "entraineur": "F. Foresi",
+      "musique": "0p 0p 3p 0p 8p 0p 0p 1p 6p 7p"
     },
     {
       "num": 13,
-      "nom": "Kapitano de Lou",
-      "cote_probable": null,
+      "nom": "Black Ultra",
+      "cote_probable": 11.0,
       "pct_enjeux": null,
       "stats": "",
       "age": null,
-      "driver": null,
-      "entraineur": null,
-      "musique": null
+      "driver": "A. Werle",
+      "entraineur": "O. Trigodet",
+      "musique": "5p 1p 3p 6p 0p 1p 0p (25) 0p 5p"
     },
     {
       "num": 14,
-      "nom": "Koméo du Dôme",
-      "cote_probable": null,
+      "nom": "Georges Ville",
+      "cote_probable": 16.0,
       "pct_enjeux": null,
       "stats": "",
       "age": null,
-      "driver": null,
-      "entraineur": null,
-      "musique": null
+      "driver": "R. Dubord",
+      "entraineur": "A.-J. Baptista Ribeiro de Abreu",
+      "musique": "3p 2p 2p 0p 3p 8p 0p 8p 0p 4p"
     },
     {
       "num": 15,
-      "nom": "Kancalais",
-      "cote_probable": null,
+      "nom": "Spanish Light",
+      "cote_probable": 33.0,
       "pct_enjeux": null,
       "stats": "",
       "age": null,
-      "driver": null,
-      "entraineur": null,
-      "musique": null
+      "driver": "M. Foulon",
+      "entraineur": "R.-C. Montenegro",
+      "musique": "6p 7p 4p 2p 3p 5p 3p 0p 4p 1p"
     },
     {
       "num": 16,
-      "nom": "Kismet",
-      "cote_probable": null,
+      "nom": "Swiss Money",
+      "cote_probable": 31.0,
       "pct_enjeux": null,
       "stats": "",
       "age": null,
-      "driver": null,
-      "entraineur": null,
-      "musique": null
-    },
-    {
-      "num": 17,
-      "nom": "Kapusha Mip",
-      "cote_probable": null,
-      "pct_enjeux": null,
-      "stats": "",
-      "age": null,
-      "driver": null,
-      "entraineur": null,
-      "musique": null
+      "driver": "A. Merou",
+      "entraineur": "A.-L. Guildoux",
+      "musique": "7p 5p 3p 1p 5p 3p 5p (25) 0p 1p"
     }
   ],
   "presse": {
     "nb_journaux": 30,
     "synthese": [
       {
-        "num": 13,
-        "nom": "Kapitano de Lou",
-        "points": 192,
+        "num": 10,
+        "nom": "Britania",
+        "points": 200,
         "citations": 30,
-        "premiers_choix": 12
-      },
-      {
-        "num": 15,
-        "nom": "Kancalais",
-        "points": 178,
-        "citations": 30,
-        "premiers_choix": 8
+        "premiers_choix": 16
       },
       {
         "num": 11,
-        "nom": "Kejaime de Houelle",
-        "points": 129,
-        "citations": 27,
-        "premiers_choix": 2
-      },
-      {
-        "num": 16,
-        "nom": "Kismet",
-        "points": 129,
-        "citations": 26,
-        "premiers_choix": 4
+        "nom": "King Trezy",
+        "points": 169,
+        "citations": 28,
+        "premiers_choix": 5
       },
       {
         "num": 5,
-        "nom": "Kannabis Jeloca",
-        "points": 115,
-        "citations": 23,
+        "nom": "Xilofono",
+        "points": 153,
+        "citations": 27,
+        "premiers_choix": 3
+      },
+      {
+        "num": 13,
+        "nom": "Black Ultra",
+        "points": 133,
+        "citations": 29,
         "premiers_choix": 2
       },
       {
-        "num": 12,
-        "nom": "Kaiser des Granges",
-        "points": 98,
-        "citations": 23,
+        "num": 7,
+        "nom": "Sigtuna",
+        "points": 100,
+        "citations": 22,
+        "premiers_choix": 3
+      },
+      {
+        "num": 3,
+        "nom": "Spanish Breeze Cen",
+        "points": 80,
+        "citations": 20,
         "premiers_choix": 1
       },
       {
         "num": 8,
-        "nom": "Karma",
-        "points": 82,
+        "nom": "Lohengreen",
+        "points": 77,
         "citations": 21,
-        "premiers_choix": 1
-      },
-      {
-        "num": 14,
-        "nom": "Koméo du Dôme",
-        "points": 51,
-        "citations": 19,
         "premiers_choix": 0
       },
       {
-        "num": 4,
-        "nom": "Kansas Quesnot",
-        "points": 34,
+        "num": 15,
+        "nom": "Spanish Light",
+        "points": 42,
+        "citations": 13,
+        "premiers_choix": 0
+      },
+      {
+        "num": 14,
+        "nom": "Georges Ville",
+        "points": 41,
         "citations": 13,
         "premiers_choix": 0
       },
       {
         "num": 2,
-        "nom": "Kynte Flush",
-        "points": 28,
+        "nom": "Poca Gen",
+        "points": 35,
+        "citations": 14,
+        "premiers_choix": 0
+      },
+      {
+        "num": 4,
+        "nom": "Sharp Rise",
+        "points": 20,
         "citations": 9,
         "premiers_choix": 0
       },
       {
-        "num": 7,
-        "nom": "Kosy d'Eronville",
-        "points": 20,
-        "citations": 8,
-        "premiers_choix": 0
-      },
-      {
-        "num": 17,
-        "nom": "Kapusha Mip",
-        "points": 14,
-        "citations": 6,
-        "premiers_choix": 0
-      },
-      {
-        "num": 10,
-        "nom": "Kazy Mérité",
+        "num": 9,
+        "nom": "Zilya",
         "points": 10,
+        "citations": 2,
+        "premiers_choix": 0
+      },
+      {
+        "num": 1,
+        "nom": "Agador",
+        "points": 8,
         "citations": 5,
+        "premiers_choix": 0
+      },
+      {
+        "num": 12,
+        "nom": "Gold Player",
+        "points": 6,
+        "citations": 3,
+        "premiers_choix": 0
+      },
+      {
+        "num": 6,
+        "nom": "Nolito",
+        "points": 4,
+        "citations": 2,
+        "premiers_choix": 0
+      },
+      {
+        "num": 16,
+        "nom": "Swiss Money",
+        "points": 2,
+        "citations": 2,
         "premiers_choix": 0
       }
     ],
@@ -255,421 +309,408 @@
       {
         "nom": "La Voix du Nord",
         "chevaux": [
-          13,
-          16,
+          10,
           11,
-          15,
+          7,
           5,
+          13,
           8,
-          4,
+          3,
           14
         ]
       },
       {
         "nom": "Centre Presse Poitiers",
         "chevaux": [
-          15,
+          3,
           13,
-          12,
+          10,
+          14,
           2,
-          7,
-          16,
-          17,
-          14
+          15,
+          4,
+          12
         ]
       },
       {
         "nom": "Nve. Rep. Centre-Ouest",
         "chevaux": [
-          13,
-          15,
-          16,
-          5,
+          10,
           11,
-          8,
-          12,
-          2
-        ]
-      },
-      {
-        "nom": "Paris Turf",
-        "chevaux": [
-          8,
-          17,
-          16,
-          15,
-          14,
+          7,
           13,
-          12,
-          11
+          5,
+          3,
+          8,
+          2
         ]
       },
       {
         "nom": "Le Parisien",
         "chevaux": [
-          15,
-          12,
-          14,
-          8,
           10,
+          11,
+          7,
           5,
           13,
-          11
+          8,
+          3,
+          14
         ]
       },
       {
         "nom": "Le Progrès de Lyon",
         "chevaux": [
-          13,
-          16,
-          11,
-          15,
           5,
-          8,
-          4,
-          14
+          11,
+          10,
+          3,
+          14,
+          9,
+          13,
+          1
         ]
       },
       {
         "nom": "Nice Matin",
         "chevaux": [
-          12,
-          13,
-          15,
           5,
           11,
+          7,
+          10,
           8,
-          2,
-          14
+          12,
+          14,
+          13
         ]
       },
       {
         "nom": "La Provence",
         "chevaux": [
-          13,
+          10,
           5,
+          13,
           11,
-          8,
-          12,
           15,
-          14,
-          16
+          2,
+          3,
+          8
         ]
       },
       {
         "nom": "Le Matin de Lausanne",
         "chevaux": [
-          13,
           11,
-          15,
-          12,
-          14,
+          13,
           5,
-          8,
-          16
+          7,
+          2,
+          10,
+          12,
+          4
         ]
       },
       {
         "nom": "République des Pyrénées",
         "chevaux": [
-          16,
-          11,
-          5,
+          7,
+          10,
           13,
           8,
-          14,
           15,
-          12
+          4,
+          2,
+          16
         ]
       },
       {
         "nom": "Paris Normandie",
         "chevaux": [
+          10,
           11,
+          14,
+          7,
           5,
           13,
-          12,
-          15,
-          2,
-          14,
-          7
+          8,
+          2
         ]
       },
       {
         "nom": "Les 7 de week-end",
         "chevaux": [
-          16,
+          10,
+          11,
           13,
-          12,
+          5,
           15,
+          3,
           7,
-          8,
-          17,
-          10
+          4
         ]
       },
       {
         "nom": "L'Yonne Républicaine",
         "chevaux": [
-          13,
-          12,
           5,
-          15,
-          16,
+          3,
           11,
-          8,
-          4
+          13,
+          15,
+          10,
+          6,
+          7
         ]
       },
       {
         "nom": "L'Echo du Centre",
         "chevaux": [
-          5,
           13,
-          15,
-          14,
+          10,
           11,
-          4,
-          12,
-          2
+          8,
+          5,
+          14,
+          3,
+          7
         ]
       },
       {
         "nom": "Week-End",
         "chevaux": [
+          10,
           5,
-          13,
-          8,
-          16,
+          7,
           15,
+          13,
           14,
-          11,
-          7
+          3,
+          11
         ]
       },
       {
         "nom": "L'Eveil",
         "chevaux": [
-          13,
-          15,
-          8,
-          12,
+          10,
           5,
           11,
+          8,
           7,
-          16
+          13,
+          6,
+          1
         ]
       },
       {
         "nom": "La Marseillaise",
         "chevaux": [
-          15,
-          5,
           13,
-          12,
-          4,
+          10,
+          11,
           8,
-          16,
-          11
+          5,
+          3,
+          14,
+          1
         ]
       },
       {
         "nom": "L'indépendant",
         "chevaux": [
-          15,
-          16,
           11,
-          12,
-          14,
-          4,
+          8,
           13,
-          17
+          7,
+          3,
+          2,
+          15,
+          10
         ]
       },
       {
         "nom": "Le Dauphiné Libéré",
         "chevaux": [
-          16,
-          13,
-          12,
-          11,
-          8,
-          15,
+          10,
           5,
-          14
+          13,
+          11,
+          15,
+          7,
+          4,
+          8
         ]
       },
       {
         "nom": "Midi-Libre",
         "chevaux": [
-          15,
-          16,
-          13,
-          11,
-          8,
+          10,
           5,
-          4,
-          14
+          3,
+          11,
+          13,
+          15,
+          8,
+          2
         ]
       },
       {
         "nom": "Le Télégramme de Brest",
         "chevaux": [
-          15,
-          11,
-          16,
-          12,
+          10,
+          3,
+          5,
           13,
-          8,
+          11,
           2,
-          14
+          8,
+          4
         ]
       },
       {
         "nom": "Ouest-France",
         "chevaux": [
-          13,
-          16,
           11,
           5,
-          15,
-          7,
+          13,
           10,
-          17
+          14,
+          15,
+          2,
+          7
         ]
       },
       {
         "nom": "Europe 1",
         "chevaux": [
-          13,
-          14,
-          2,
-          15,
-          8,
-          11,
           7,
-          16
+          11,
+          8,
+          10,
+          13,
+          15,
+          5,
+          1
         ]
       },
       {
         "nom": "Le Courrier Picard",
         "chevaux": [
-          15,
-          16,
-          11,
-          13,
-          5,
-          12,
           10,
-          4
+          5,
+          13,
+          7,
+          2,
+          8,
+          11,
+          3
         ]
       },
       {
         "nom": "Le Quotidien de la Réunion",
         "chevaux": [
-          13,
           11,
-          15,
-          5,
-          16,
-          4,
+          3,
           14,
-          12
+          5,
+          4,
+          10,
+          7,
+          13
         ]
       },
       {
         "nom": "La Montagne",
         "chevaux": [
-          13,
-          11,
-          15,
+          10,
           5,
-          12,
+          11,
+          8,
+          7,
+          13,
           4,
-          2,
-          16
+          2
         ]
       },
       {
         "nom": "La République du Centre",
         "chevaux": [
-          16,
-          15,
-          12,
+          10,
+          3,
           5,
+          2,
+          4,
           13,
           11,
-          8,
-          4
+          15
         ]
       },
       {
         "nom": "Charente Libre",
         "chevaux": [
+          10,
           11,
-          4,
-          15,
-          16,
-          13,
+          7,
           5,
-          12,
-          10
+          13,
+          8,
+          3,
+          14
         ]
       },
       {
         "nom": "Bilto",
         "chevaux": [
-          13,
-          15,
-          2,
+          11,
+          10,
+          5,
           8,
-          16,
-          7,
+          3,
           14,
-          17
+          7,
+          16
         ]
       },
       {
         "nom": "Aisne Nouvelle",
         "chevaux": [
-          15,
-          13,
-          5,
-          16,
-          8,
+          7,
+          10,
           11,
-          4,
-          12
+          5,
+          13,
+          8,
+          15,
+          2
         ]
       }
     ]
   },
   "hier": {
-    "date": "2026-11-02",
+    "date": "2026-11-10",
     "hippodrome": "Fontainebleau",
     "arrivee": [
-      1,
+      4,
+      9,
+      15,
       5,
-      3,
-      6,
-      11
+      13
     ],
     "rapports": {
-      "quinte_desordre": 22.54,
-      "bonus4": 9.66,
-      "bonus3": 4.02,
+      "quinte_desordre": 9775.2,
+      "bonus4": 49.0,
+      "bonus3": 39.4,
       "simple_place": {
-        "1": 1.72,
-        "5": 2.47,
-        "3": 5.62
+        "4": 6.1,
+        "9": 2.5,
+        "15": 16.2
       }
     },
-    "presse_bilan": "la synthèse avait les 5 chevaux de l'arrivée dans son top 8, dix journaux ont eu 5 sur 5, seize en ont eu 4 et quatre en ont eu 3."
+    "presse_bilan": "la synthèse n'avait que 2 des 5 premiers (Schuman et Marbellesa), le gagnant Mister Chang était 10e de la synthèse, Paintello n'était cité par aucun journal, les meilleurs journaux en avaient 3 sur 5."
   },
   "sources": {
     "presse": "ok",
-    "cotes": "indisponible",
-    "stats": "indisponible",
+    "cotes": "ok",
+    "stats": "ok",
     "hier": "ok"
   }
 }
