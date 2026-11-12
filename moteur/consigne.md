@@ -19,11 +19,13 @@ Relève :
 - Les 8 chevaux de chaque journal, dans l'ordre, pour tous les journaux du tableau. Au minimum ceux listés dans config.yaml sous journaux_affiches et titres_specialises. Garde le nom du journal tel qu'il est écrit sur le site.
 - Le bilan d'hier (bloc "presse contre arrivée") : une phrase sur ce que la presse avait trouvé.
 
+Si la ligne d'un journal n'a pas 8 numéros distincts (numéro manquant ou répété), ne la mets pas dans journaux et signale-le dans la ligne de bilan. La synthèse de la source reste recopiée telle quelle.
+
 Si la page est indisponible ou si le tableau du jour n'est pas encore en ligne, essaie une fois la page "pronostics presse" de la course sur turfoo.fr. Si rien ne fonctionne, mets presse à null et sources.presse à "indisponible", et passe aux étapes suivantes quand même.
 
 ## Étape 2 : les partants et les cotes du matin
 
-Sur geny.com, ouvre la page partants du Quinté+ du jour (trouve le lien depuis https://www.geny.com/) et relève pour chaque cheval, y compris ceux que la presse ne cite pas :
+Sur geny.com, ouvre la page partants du Quinté+ du jour (trouve le lien depuis https://www.geny.com/). Avant de relever quoi que ce soit, vérifie que la date, l'hippodrome et le prix en tête de page sont ceux du jour. Relève pour chaque cheval, y compris ceux que la presse ne cite pas :
 - numéro, nom,
 - age : âge et sexe en toutes lettres, par exemple "6 ans, hongre",
 - driver : le driver ou le jockey, initiale et nom,
@@ -33,7 +35,7 @@ Sur geny.com, ouvre la page partants du Quinté+ du jour (trouve le lien depuis 
 - pct_enjeux : le pourcentage des enjeux, s'il est affiché.
 Note aussi les non-partants annoncés dans non_partants.
 
-Si Geny ne répond pas, essaie la page de la course sur pmu.fr. Une seule tentative par site. Si rien, laisse les champs manquants à null et mets sources.cotes à "indisponible". Si tu as les partants mais pas les cotes, remplis quand même age, driver, entraineur et musique.
+Si Geny ne répond pas ou ne montre pas la course du jour, essaie une fois la page de la course sur Equidia : https://www.equidia.fr/courses/AAAA-MM-JJ/R<réunion>/C<course>, avec la date du jour et la réunion et la course relevées à l'étape 1 (exemple : https://www.equidia.fr/courses/2026-11-11/R1/C3 pour R1 C3 le 11 novembre 2026). Elle donne jockey, entraîneur, musique et une cote PMU horodatée du matin : prends-la comme cote_probable. pmu.fr ne s'affiche pas avec cet outil, inutile de l'essayer. Une seule tentative par site. Si rien, laisse les champs manquants à null et mets sources.cotes à "indisponible". Si tu as les partants mais pas les cotes, remplis quand même age, driver, entraineur et musique.
 
 ## Étape 3 : les statistiques
 
